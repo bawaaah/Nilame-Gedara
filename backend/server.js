@@ -4,16 +4,14 @@ const express = require("express"); //declare dependencies
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const dotenv = require("dotenv"); 
 const app = express();
-require("dotenv").config();
 
 const PORT = process.env.PORT || 8070; //8070 OR 8070 eka nattan wena available ekak
 
 app.use(cors()); //declare karapuwa use karanawa
 app.use(bodyParser.json());
 
-const URL = process.env.MONGODB_URL; 
+const URL = "mongodb+srv://bhawan:200132400588@atlascluster.fl5bp73.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"; 
 
 mongoose.connect(URL, { //connect mongodb
     //useCreateIndex: true, 

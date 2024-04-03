@@ -26,7 +26,24 @@ const productSchema = new Schema({ //object ekak hadanwa wage deyak
     },
     DisposedQty : {
         type: Number
-    }
+    },
+    //bawan requirements
+    description: {
+        type: String,
+        required: true
+    },
+    rentalPrice: {
+        type: Number,
+        required: true
+    },
+    availability: {
+        type: Boolean,
+        required: true
+    },
+    //add image
+
+
+
 
 })
 

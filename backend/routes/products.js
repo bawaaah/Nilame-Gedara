@@ -7,11 +7,19 @@ router.route("/add").post((req,res)=>{
     const name = req.body.name;
     const pid = Number(req.body.pid);
     const category = req.body.category;
+    const description = req.body.description;
+    const rentalPrice = req.body.rentalPrice;
+
+    const availability = true;
+
 
     const newProduct = new Product({ //create object from product
         name,
         pid,
-        category
+        category,
+        description,
+        rentalPrice,
+        availability
     })
 
     newProduct.save().then(()=>{//mongo db ekata pass karanawa

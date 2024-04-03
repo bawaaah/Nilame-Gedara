@@ -6,6 +6,9 @@ export default function AddProduct() {
     const [name, setName] = useState("");
     const [pid, setPID] = useState("");
     const [category, setCategory] = useState("");
+    const [description, setDescription] = useState("");
+    const [rentalPrice, setRentalPrice] = useState("");
+
     
 
     function sendData(e){
@@ -16,8 +19,9 @@ export default function AddProduct() {
 
             name,
             pid,
-            category
-
+            category,
+            description,
+            rentalPrice
         }
 
         //if authentication we can add another parameter
@@ -49,6 +53,24 @@ export default function AddProduct() {
                 <input type="number" className="form-control" id="pid" placeholder="Enter Product QTY" onChange={(e) => {
 
                     setPID(e.target.value);
+
+                }} />
+            </div>
+
+            <div className="mb-3">
+                <label for="description" >Product description</label>
+                <input type="text" className="form-control" id="description" placeholder="Enter Product description" onChange={(e) => {
+
+                    setDescription(e.target.value);
+
+                }} />
+            </div>
+
+            <div className="mb-3">
+                <label for="rentalPrice" >Product rentalPrice</label>
+                <input type="text" className="form-control" id="rentalPrice" placeholder="Enter Product rentalPrice" onChange={(e) => {
+
+                    setRentalPrice(e.target.value);
 
                 }} />
             </div>
