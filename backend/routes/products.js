@@ -1,34 +1,49 @@
 const router = require("express").Router();
 let Product = require("../models/product");
+const multer = require('multer'); // Import Multer for handling file uploads
 
-//CRUD - Add
-router.route("/add").post((req,res)=>{
+// Set up multer storage configuration
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
+// CRUD - Add with Image
+router.route("/add").post(upload.single('image'), (req, res) => {
     const name = req.body.name;
     const pid = Number(req.body.pid);
     const category = req.body.category;
     const description = req.body.description;
     const rentalPrice = req.body.rentalPrice;
-
     const availability = true;
 
+    // Check if file was uploaded
+    let image = null;
+    if (req.file) {
+        image = {
+            data: req.file.buffer,
+            contentType: req.file.mimetype
+        };
+    }
 
-    const newProduct = new Product({ //create object from product
+    const newProduct = new Product({
         name,
         pid,
         category,
         description,
         rentalPrice,
-        availability
-    })
+        availability,
+        image
+    });
 
-    newProduct.save().then(()=>{//mongo db ekata pass karanawa
-        res.json("Product Added") //if success
-    }).catch((err)=>{
-        console.log(err); //else if not success
-    }) 
+    newProduct.save()
+        .then(() => {
+            res.json("Product Added");
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json("Error: Product not added");
+        });
+});
 
-})
 
 //CRUD - read
 router.route("/").get((req,res)=>{
@@ -239,6 +254,41 @@ router.route("/disposedItemCount").get(async (req, res) => {
         res.status(500).json({ status: "Error", error: err.message });
     }
 });
+
+
+// CRUD - Read (Single product) - with images
+router.route("/getImages/:id").get(async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).json({ status: "Error", message: "Product not found" });
+        }
+
+        // Convert binary image data to base64
+        const imageData = product.image ? product.image.data.toString('base64') : null;
+
+        // Send response with product details and image data
+        res.status(200).json({ status: "Product fetched", product: { ...product.toJSON(), image: imageData } });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ status: "Error", error: err.message });
+    }
+});
+
+//low stocked list
+
+router.route("/getLowStockLIst").get((req, res) => {
+    Product.find({ pid: { $lt: 10 } }).then((products) => {
+        res.json(products);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
+});
+
+
+
 
 
 

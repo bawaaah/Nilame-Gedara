@@ -1,82 +1,104 @@
 import React, { useState } from "react";
-import axios from "axios" ;
+import axios from "axios";
 
 export default function AddProduct() {
-
     const [name, setName] = useState("");
     const [pid, setPID] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [rentalPrice, setRentalPrice] = useState("");
+    const [image, setImage] = useState(null); // State to store selected image
 
-    
-
-    function sendData(e){
-
+    function sendData(e) {
         e.preventDefault();
 
-        const newProduct = {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("pid", pid);
+        formData.append("category", category);
+        formData.append("description", description);
+        formData.append("rentalPrice", rentalPrice);
+        formData.append("image", image); // Append selected image to form data
 
-            name,
-            pid,
-            category,
-            description,
-            rentalPrice
-        }
-
-        //if authentication we can add another parameter
-        axios.post("http://localhost:8070/products/add", newProduct ).then(() => {
-            alert("Product Added!")
-        }).catch((err) => {
-            alert(err)
-        })
-
-
+        axios
+            .post("http://localhost:8070/products/add", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then(() => {
+                alert("Product Added!");
+            })
+            .catch((err) => {
+                alert(err);
+            });
     }
 
+    // Function to handle image selection
+    function handleImageChange(e) {
+        setImage(e.target.files[0]);
+    }
 
     return (
-
         <div className="container">
-        <form onSubmit={sendData}> 
-            <div className="mb-3">
-                <label for="name" >Product name</label>
-                <input type="text" className="form-control" id="name" placeholder="Enter Product Name" onChange={(e) => {
+            <form onSubmit={sendData}>
+                <div className="mb-3">
+                    <label htmlFor="name">Product name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        placeholder="Enter Product Name"
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
 
-                    setName(e.target.value);
+                {/* Add file input field for image */}
+                <div className="mb-3">
+                    <label htmlFor="image">Product Image</label>
+                    <input
+                        type="file"
+                        className="form-control"
+                        id="image"
+                        accept="image/*"
+                        onChange={handleImageChange}
+                    />
+                </div>
 
-                }}/>
-            </div>
-            
-            <div className="mb-3">
-                <label for="pid" >Product Quantity</label>
-                <input type="number" className="form-control" id="pid" placeholder="Enter Product QTY" onChange={(e) => {
+                <div className="mb-3">
+                    <label htmlFor="pid">Product Quantity</label>
+                    <input
+                        type="number"
+                        className="form-control"
+                        id="pid"
+                        placeholder="Enter Product QTY"
+                        onChange={(e) => setPID(e.target.value)}
+                    />
+                </div>
 
-                    setPID(e.target.value);
+                <div className="mb-3">
+                    <label htmlFor="description">Product description</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="description"
+                        placeholder="Enter Product description"
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </div>
 
-                }} />
-            </div>
+                <div className="mb-3">
+                    <label htmlFor="rentalPrice">Product rentalPrice</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="rentalPrice"
+                        placeholder="Enter Product rentalPrice"
+                        onChange={(e) => setRentalPrice(e.target.value)}
+                    />
+                </div>
 
-            <div className="mb-3">
-                <label for="description" >Product description</label>
-                <input type="text" className="form-control" id="description" placeholder="Enter Product description" onChange={(e) => {
-
-                    setDescription(e.target.value);
-
-                }} />
-            </div>
-
-            <div className="mb-3">
-                <label for="rentalPrice" >Product rentalPrice</label>
-                <input type="text" className="form-control" id="rentalPrice" placeholder="Enter Product rentalPrice" onChange={(e) => {
-
-                    setRentalPrice(e.target.value);
-
-                }} />
-            </div>
-
-           
-            <div className="mb-3">
+                <div className="mb-3">
             <label for="radio" >Product Category</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="category 01" onChange={(e) => {
@@ -110,8 +132,10 @@ export default function AddProduct() {
                 </div>
             </div>
 
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+                <button type="submit" className="btn btn-primary">
+                    Submit
+                </button>
+            </form>
         </div>
-    )
+    );
 }

@@ -125,7 +125,7 @@ export default function AllProducts(){
 
             <div class="button-row">
                 <button>Generate Reports</button>
-                <button>Low Item List</button>
+                <Link to={`/LowStockedList`} className="button link-button">Low Item List</Link>
                 <Link to={`/DamageItemList`} className="button link-button">Damaged Items</Link>
                 <Link to={`/DisposedItemList`} className="button link-button">Disposed Items</Link>
                 <button>Manage Item</button>
@@ -152,7 +152,7 @@ export default function AllProducts(){
                             <td>{product.pid}</td>
                             <td>{product.category}</td>
                             <td>
-                                <Link to={`/edit/${product._id}`} className="button link-button update">Update</Link>
+                                <Link to={`/DisplaySingle/${product._id}`} className="button link-button update">View</Link>
                                 <Link to={`/AddDamageItems/${product._id}`} className="button link-button damage">Report Damage</Link>
                                 <Link to={`/AddDisposeItems/${product._id}`} className="button link-button dispose">Dispose Item</Link>
                                 <button className="button button-delete" onClick={() => deleteProduct(product._id)} >Delete</button>

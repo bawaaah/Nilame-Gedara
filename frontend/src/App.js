@@ -9,6 +9,8 @@ import AddDamageItems from './components/AddDamageItems';
 import DamageItemList from './components/DamagedItemList';
 import AddDisposeItems from './components/AddDisposeItems';
 import DisposedItemList from './components/DisposedItemList';
+import DisplaySingle from './components/displaySingle';
+import LowStockedList from './components/LowStockedList';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
               <Route path="/DamageItemList" element={<DamageItemList />} />
               <Route path="/AddDisposeItems/:id" element={<AddDisposeItems />} />
               <Route path="/DisposedItemList/" element={<DisposedItemList />} />
+              <Route path="/DisplaySingle/:id" element={<DisplaySingle />} /> 
+              <Route path="/LowStockedList" element={<LowStockedList />} /> 
 
             </Routes>
           </div>

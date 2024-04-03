@@ -41,6 +41,10 @@ const productSchema = new Schema({ //object ekak hadanwa wage deyak
         required: true
     },
     //add image
+    image: {
+        data: Buffer, // Binary data for image
+        contentType: String // Mime type of the image
+    }
 
 
 
