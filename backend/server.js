@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 8070; //8070 OR 8070 eka nattan wena available 
 app.use(cors()); //declare karapuwa use karanawa
 app.use(bodyParser.json());
 
-const mongoDbURL = "mongodb+srv://bhawan:200132400588@atlascluster.fl5bp73.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
+const URL = process.env.MONGODB_URL; 
 
-mongoose.connect(mongoDbURL, { //connect mongodb
+mongoose.connect(URL, { //connect mongodb
     //useCreateIndex: true, 
     //useNewUrlParser: true,
     //useUnifiedTopology: true,
