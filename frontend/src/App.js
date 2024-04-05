@@ -11,6 +11,8 @@ import AddDisposeItems from './components/AddDisposeItems';
 import DisposedItemList from './components/DisposedItemList';
 import DisplaySingle from './components/displaySingle';
 import LowStockedList from './components/LowStockedList';
+import AddCategory from './components/AddCategory';
+import AllCategorys from './components/AllCategorys';
 
 function App() {
   return (
@@ -29,7 +31,7 @@ function App() {
             
             <Routes>
               <Route path="/add" element={<AddProduct />} />
-              <Route path="/" element={<AllProducts />} />
+              <Route path="/AllProducts" element={<AllProducts />} />
               <Route path="/edit/:id" element={<EditProduct />} />
               <Route path="/AddDamageItems/:id" element={<AddDamageItems />} />
               <Route path="/DamageItemList" element={<DamageItemList />} />
@@ -37,6 +39,11 @@ function App() {
               <Route path="/DisposedItemList/" element={<DisposedItemList />} />
               <Route path="/DisplaySingle/:id" element={<DisplaySingle />} /> 
               <Route path="/LowStockedList" element={<LowStockedList />} /> 
+              <Route path="/AddCategory" element={<AddCategory />} /> 
+              <Route path="/" element={<AllCategorys />} /> 
+
+
+
 
             </Routes>
           </div>

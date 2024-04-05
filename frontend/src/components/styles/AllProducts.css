@@ -39,7 +39,7 @@
 
 .button-row {
     display: flex;
-    justify-content:flex-start;
+    justify-content:space-between;
     align-items: center;
     width: 100%;
     padding: 10px;
@@ -117,8 +117,8 @@ tr:hover {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: #007bff; /* Change to your desired background color */
-    color: #fff; /* Change to your desired text color */
+    background-color: #007bff; 
+    color: #fff; 
     text-decoration: none;
     transition: background-color 0.3s ease;
     margin-left: 10px;
@@ -151,7 +151,7 @@ td:last-child {
 .link-button {
     display: inline-block;
     padding: 0.5rem 1rem;
-    color: #fff; /* Text color */
+    color: #fff; 
     text-decoration: none;
     border: none;
     border-radius: 4px;
@@ -197,3 +197,8 @@ td:last-child {
 .button-row .link-button:hover {
     background-color: #D4BB9D; 
 }
+
+.d-flex {
+    margin-bottom: 20px;
+}
+

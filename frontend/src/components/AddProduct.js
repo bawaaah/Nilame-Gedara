@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function AddProduct() {
@@ -8,6 +8,25 @@ export default function AddProduct() {
     const [description, setDescription] = useState("");
     const [rentalPrice, setRentalPrice] = useState("");
     const [image, setImage] = useState(null); // State to store selected image
+    const [categorys, setCategorys] = useState([]);
+
+    useEffect(() => {
+
+        getcategorys();
+        
+
+    }, [] );
+
+    function getcategorys(){
+
+        axios.get("http://localhost:8070/categorys/").then((res) => {
+            setCategorys(res.data);
+        }).catch((err) => {
+            alert(err)
+        })
+
+    }
+
 
     function sendData(e) {
         e.preventDefault();
@@ -100,36 +119,25 @@ export default function AddProduct() {
 
                 <div className="mb-3">
             <label for="radio" >Product Category</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="category 01" onChange={(e) => {
+                
 
-                        setCategory(e.target.value);
-
-                    }} />
-                    <label class="form-check-label" for="category">
-                        category 01
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="category 02" onChange={(e) => {
-
-                        setCategory(e.target.value);
-
-                    }} />
-                    <label class="form-check-label" for="category">
-                        category 02
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="category 03" onChange={(e) => {
-
-                        setCategory(e.target.value);
-
-                    }} />
-                    <label class="form-check-label" for="category">
-                        category 03
-                    </label>
-                </div>
+                {categorys.map((category) => (
+                    <div className="form-check" key={category._id}>
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id={`exampleRadios-${category._id}`}
+                            value={category.name}
+                            onChange={(e) => {
+                                setCategory(e.target.value);
+                            }}
+                        />
+                        <label className="form-check-label" htmlFor={`exampleRadios-${category._id}`}>
+                            {category.name}
+                        </label>
+                    </div>
+                ))}
             </div>
 
                 <button type="submit" className="btn btn-primary">

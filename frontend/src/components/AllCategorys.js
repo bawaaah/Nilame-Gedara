@@ -1,45 +1,34 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from 'react-router-dom';
+import './styles/AllCategorys.css';
+import { Link } from "react-router-dom";
 import './styles/AllProducts.css'
 import total from "./images/total.png";
 import lowstock from "./images/lowstock.png";
-import { Link } from "react-router-dom";
 
-
-export default function AllProducts(){
-
-    const [products, setProducts] = useState([]);
+export default function AllCategorys() {
+    const [categories, setCategories] = useState([]);
     const [productCount, setProductCount] = useState(0);
     const [productLowCount, setProductLowCount] = useState(0);
     const [damagedCount, setdamagedCount] = useState(0);
     const [disposedCount, setdisposedCount] = useState(0);
-    const [search, setSearch] = useState('');
-
-    
-
-
-
 
     useEffect(() => {
-
-        getProducts();
+        getAllCategory();
         getCount();
         getLowCount();
         getDamagedCount();
         getDisposedCount();
-        
+    }, []);
 
-    }, [] );
-
-
-    function getProducts(){
-
-        axios.get("http://localhost:8070/products/").then((res) => {
-            setProducts(res.data);
-        }).catch((err) => {
-            alert(err)
-        })
-
+    function getAllCategory() {
+        axios.get(`http://localhost:8070/categorys/getAllImages`)
+            .then((res) => {
+                setCategories(res.data.category);
+            }).catch((err) => {
+                console.error(err);
+            });
     }
 
     function getCount() {
@@ -51,21 +40,6 @@ export default function AllProducts(){
             alert(err);
         });
     }
-
-    function deleteProduct(productId) {
-        axios.delete(`http://localhost:8070/products/delete/${productId}`)
-            .then((res) => {
-                alert("Product deleted successfully");
-                // After successful deletion, refresh the component
-                getProducts();
-                getCount();
-                getLowCount();
-            })
-            .catch((err) => {
-                alert("Error deleting product: " + err.message); 
-                console.error(err);
-            });
-    };
 
     function getLowCount() {
 
@@ -97,9 +71,7 @@ export default function AllProducts(){
         });
     }
 
-    
-
-    return(
+    return (
         <div className="AllProductContainer">
             
             <div className="notify">
@@ -134,50 +106,28 @@ export default function AllProducts(){
                 <Link to={`/AllProducts`} className="button link-button">Manage Items</Link>
                 <Link to={`/add`} className="button link-button">Add New Items</Link>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)}/>
-                </form>
             </div>
             
             <hr/>
 
-            
-
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Product Quantity</th>
-                        <th>Category</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.filter((product) => {
-                        return search.toLowerCase() == '' ? product 
-                        : product.name.toLowerCase().includes(search)
-;                    }).map((product) => (
-                        <tr key={product._id}>
-                            <td>{product.name}</td>
-                            <td>{product.pid}</td>
-                            <td>{product.category}</td>
-                            <td>
-                                <Link to={`/DisplaySingle/${product._id}`} className="button link-button update">View</Link>
-                                <Link to={`/AddDamageItems/${product._id}`} className="button link-button damage">Report Damage</Link>
-                                <Link to={`/AddDisposeItems/${product._id}`} className="button link-button dispose">Dispose Item</Link>
-                                <button className="button button-delete" onClick={() => deleteProduct(product._id)} >Delete</button>
-
-
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-
+        <div className="container">
+            {categories.map((category) => (
+                <div className="card" key={category._id}>
+                    <div className="card-image">
+                        {category.image && (
+                            <img src={`data:image;base64,${category.image}`} alt="category" className="category-image" />
+                        )}
+                    </div>
+                    <div className="card-content">
+                        <h2>{category.name}</h2>
+                        <p>{category.description}</p>
+                    </div>
+                    <div className="card-actions">
+                        <Link to={`/category/${category._id}`} className="button">View Details</Link>
+                    </div>
+                </div>
+            ))}
         </div>
-
-    )
-
+        </div>
+    );
 }

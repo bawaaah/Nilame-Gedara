@@ -26,8 +26,11 @@ connection.once("open", () => {
 })
 
 const productRouter = require("./routes/products.js");
+const categoryRouter = require("./routes/categorys.js");
+
 
 app.use("/products",productRouter); //assign wela thiyena file eka load wenna
+app.use("/categorys",categoryRouter);
 
 app.listen(PORT, () => { //ara port eka listn krnna
     console.log(`Server is up and running on port number: ${PORT}`);
