@@ -111,14 +111,18 @@ router.route("/count").get(async (req, res) => {
     }
 });
 
-// Get from category 01
-router.route("/category01").get((req, res) => {
-    Product.find({ category: "category 01" }).then((products) => {
+// Get from category wise
+router.route("/categorySingle/:category").get((req, res) => {
+    let productCategory = req.params.category;
+
+    Product.find({ category: productCategory }).then((products) => {
         res.json(products);
     }).catch((err) => {
         console.log(err);
+        res.status(500).json({ error: "Internal server error" }); // Optionally, you can send an error response to the client
     });
 });
+
 
 //get low stocked items
 router.route("/lowCount").get(async (req, res) => {

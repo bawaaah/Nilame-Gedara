@@ -59,7 +59,9 @@ export default function AddProduct() {
     }
 
     return (
-        <div className="container">
+        <div>
+
+            <h2> Add New Product </h2>
             <form onSubmit={sendData}>
                 <div className="mb-3">
                     <label htmlFor="name">Product name</label>

@@ -34,7 +34,10 @@ export default function AddCategory() {
     }
 
     return (
-        <div className="container">
+        <div className>
+            <h2>Add New Category</h2>
+
+            
             <form onSubmit={sendData}>
                 <div className="mb-3">
                     <label htmlFor="name">Category name</label>

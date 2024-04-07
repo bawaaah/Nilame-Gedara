@@ -72,6 +72,8 @@ export default function DamageItemList(){
     return(
         <div className="AllProductContainer">
 
+            <h2> List of Damaged Items</h2>
+
             <table>
                 <thead>
                     <tr>

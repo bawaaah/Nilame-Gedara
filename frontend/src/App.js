@@ -13,6 +13,7 @@ import DisplaySingle from './components/displaySingle';
 import LowStockedList from './components/LowStockedList';
 import AddCategory from './components/AddCategory';
 import AllCategorys from './components/AllCategorys';
+import CategoryWise from './components/CategoryWise';
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
               <Route path="/LowStockedList" element={<LowStockedList />} /> 
               <Route path="/AddCategory" element={<AddCategory />} /> 
               <Route path="/" element={<AllCategorys />} /> 
+              <Route path="/CategoryWise/:cat" element={<CategoryWise />} /> 
+
 
 
 
