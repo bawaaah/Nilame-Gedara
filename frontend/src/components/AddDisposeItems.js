@@ -55,7 +55,12 @@ export default function AddDisposeItems() {
 
     return (
 
-        <div className="container">
+        <div className="containerFrom">
+
+        <div class="form-container">
+
+            <h2> Enter Disposing Quantity  </h2>
+
 
 
         <form onSubmit={sendData}> 
@@ -90,10 +95,11 @@ export default function AddDisposeItems() {
 
 
 
-            <button type="submit" className="btn btn-primary">Update Product</button>
+            <button type="submit" className="btn btn-primary">Dispose Product</button>
         </form>
 
-    
+        </div>
+
 
         </div>
     )

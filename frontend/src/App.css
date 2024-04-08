@@ -22,7 +22,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
@@ -120,3 +119,6 @@ h2 {
   color: #2A0A0B;
 }
 
+.bg-brown {
+  background-color: #D4BB9D;
+}

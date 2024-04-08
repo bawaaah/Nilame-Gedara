@@ -55,7 +55,11 @@ export default function AddDamageItems() {
 
     return (
 
-        <div className="container">
+        <div className="containerFrom">
+
+        <div class="form-container">      
+
+        <h2> Add Damaged Quantity </h2>
 
 
         <form onSubmit={sendData}> 
@@ -93,7 +97,8 @@ export default function AddDamageItems() {
             <button type="submit" className="btn btn-primary">Add Damaged Item </button>
         </form>
 
-    
+        </div>
+
 
         </div>
     )

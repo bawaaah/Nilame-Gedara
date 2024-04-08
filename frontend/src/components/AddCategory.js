@@ -34,7 +34,9 @@ export default function AddCategory() {
     }
 
     return (
-        <div className>
+        <div className="containerFrom">
+
+            <div class="form-container">
             <h2>Add New Category</h2>
 
             
@@ -77,6 +79,8 @@ export default function AddCategory() {
                     Submit
                 </button>
             </form>
+            </div>
+
         </div>
     );
 }

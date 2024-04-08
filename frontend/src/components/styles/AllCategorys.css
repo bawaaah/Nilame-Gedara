@@ -32,7 +32,7 @@
 
 .card-content {
     padding: 15px;
-    
+
 }
 
 .card-content h2 {
@@ -51,8 +51,8 @@
 }
 
 .button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #2A0A0B;
+    color: #D4BB9D;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
@@ -63,5 +63,6 @@
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #D4BB9D;
+    color: #2A0A0B;
 }

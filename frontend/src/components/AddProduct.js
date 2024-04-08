@@ -59,12 +59,15 @@ export default function AddProduct() {
     }
 
     return (
-        <div>
+        <div className="containerFrom">
+
+        <div class="form-container">
 
             <h2> Add New Product </h2>
+
             <form onSubmit={sendData}>
                 <div className="mb-3">
-                    <label htmlFor="name">Product name</label>
+                    <label htmlFor="name">Product Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -98,7 +101,7 @@ export default function AddProduct() {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="description">Product description</label>
+                    <label htmlFor="description">Product Description</label>
                     <input
                         type="text"
                         className="form-control"
@@ -109,7 +112,7 @@ export default function AddProduct() {
                 </div>
 
                 <div className="mb-3">
-                    <label htmlFor="rentalPrice">Product rentalPrice</label>
+                    <label htmlFor="rentalPrice">Product Rental Price</label>
                     <input
                         type="text"
                         className="form-control"
@@ -143,9 +146,10 @@ export default function AddProduct() {
             </div>
 
                 <button type="submit" className="btn btn-primary">
-                    Submit
+                    Add Product
                 </button>
             </form>
+            </div>
         </div>
     );
 }

@@ -73,7 +73,19 @@ router.route("/getAllImages").get(async (req, res) => {
     }
 });
 
+//CRUD - delete
+router.route("/delete/:name").delete(async (req,res) => {
+    let categoryName = req.params.name;
 
+    await Category.findOneAndDelete({ name: categoryName })
+        .then(() => {
+            res.status(200).send({ status: "Category Deleted" }) 
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with delete category", error: err.message }); 
+        });
+});
 
 
 module.exports = router;

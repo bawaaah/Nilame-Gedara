@@ -94,49 +94,73 @@ export default function CategoryWise(){
         });
     }
 
+    function deleteCategory(CategoryId) {
+        axios.delete(`http://localhost:8070/categorys/delete/${CategoryId}`)
+            .then((res) => {
+                alert("Category deleted successfully");
+            })
+            .catch((err) => {
+                alert("Error deleting product: " + err.message); 
+                console.error(err);
+            });
+
+            axios.delete(`http://localhost:8070/products/deleteCat/${CategoryId}`)
+            .then((res) => {
+                alert("Products deleted successfully");
+                window.location.href = '/';
+            })
+            .catch((err) => {
+                alert("Error deleting product: " + err.message); 
+                console.error(err);
+            });
+    };
+
     
 
     return(
         <div className="AllProductContainer">
-            
+
             <div className="notify">
 
                 <div className="notifySub">
-                    <img src={total}/>
-                    <p>Total Products: {productCount}</p>
+                    <img src={total} />
+                    <Link to={`/AllProducts`} style={{ textDecoration: 'none', color: 'aliceblue' }}>Total Products: {productCount}</Link>
                 </div>
 
                 <div className="notifySubLowStocked">
-                    <img src={lowstock}/>
-                    <p>Out of Stock: {productLowCount}</p>
+                    <img src={lowstock} />
+                    <Link to={`/LowStockedList`} style={{ textDecoration: 'none', color: 'red' }} >Out of Stock: {productLowCount}</Link>
                 </div>
 
                 <div className="notifySub">
-                    <img src={total}/>
-                    <p>Total Damaged Items: {damagedCount}</p>
+                    <img src={total} />
+                    <Link to={`/DamageItemList`} style={{ textDecoration: 'none', color: 'aliceblue' }}>Total Damaged Items: {damagedCount}</Link>
                 </div>
-                
+
                 <div className="notifySub">
-                    <img src={total}/>
-                    <p>Total Disposed Items: {disposedCount}</p>
+                    <img src={total} />
+                    <Link to={`/DisposedItemList`} style={{ textDecoration: 'none', color: 'aliceblue' }}>Total Disposed Items: {disposedCount}</Link>
+
                 </div>
 
             </div>
 
             <div class="button-row">
-                <button>Generate Reports</button>
-                <Link to={`/LowStockedList`} className="button link-button">Low Item List</Link>
-                <Link to={`/DamageItemList`} className="button link-button">Damaged Items</Link>
-                <Link to={`/DisposedItemList`} className="button link-button">Disposed Items</Link>
+                <Link to={`/GenerateReports`} className="button link-button">Generate Reports</Link>
                 <Link to={`/AllProducts`} className="button link-button">Manage Items</Link>
                 <Link to={`/add`} className="button link-button">Add New Items</Link>
+                <Link to={`/AddCategory`} className="button link-button">Add New Category</Link>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)}/>
+                <form class="searchBar" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
                 </form>
+
             </div>
+
             
             <hr/>
+
+            <h2> {cat.toUpperCase()} </h2>
 
             
             <table>
@@ -167,6 +191,9 @@ export default function CategoryWise(){
                     ))}
                 </tbody>
             </table>
+
+            <button className="button button-delete" onClick={() => deleteCategory(cat)} >Delete</button>
+
 
 
         </div>

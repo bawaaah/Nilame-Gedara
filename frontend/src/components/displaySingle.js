@@ -27,7 +27,7 @@ export default function DisplaySingle() {
             <div className="product-details">
                 {product.image && (
                     <div className="detail image-container">
-                        <h2>{product.name}</h2>
+                        <h2>{product.name.toUpperCase()}</h2>
                         <div className="image-frame">
                             <img src={`data:image;base64,${product.image}`} alt="Product" className="product-image" />
                         </div>

@@ -9,24 +9,24 @@ export default function AddProduct() {
     const [name, setName] = useState("");
     const [pid, setPID] = useState("");
     const [category, setCategory] = useState("");
-
-    const [products, setProducts] = useState([]);
+    const [categorys, setCategorys] = useState([]);
 
     useEffect(() => {
         getProducts();
+        getcategorys();
     }, []); 
 
     
     function getProducts() {
         axios.get(`http://localhost:8070/products/get/${id}`)
            .then((res) => {
-               setProducts(res.data.product); // Assuming res.data is an array
+                setName(res.data.product.name);
+                setPID(res.data.product.pid);
+                setCategory(res.data.product.category);
             }).catch((err) => {
                 alert(err);
             });
         }
-       
-    
 
     function sendData(e){
 
@@ -50,18 +50,30 @@ export default function AddProduct() {
     }
 
     
-    
+    function getcategorys(){
+
+        axios.get("http://localhost:8070/categorys/").then((res) => {
+            setCategorys(res.data);
+        }).catch((err) => {
+            alert(err)
+        })
+
+    }
 
 
     return (
 
-        <div className="container">
+        <div className="containerFrom">
+
+        <div class="form-container">
+
+            <h2> Edit Product </h2>
 
 
         <form onSubmit={sendData}> 
             <div className="mb-3">
                 <label for="name" >Product name</label>
-                <input type="text" className="form-control" id="name" placeholder={products.name} onChange={(e) => {
+                <input type="text" className="form-control" id="name" value={name} onChange={(e) => {
 
                     setName(e.target.value);
 
@@ -70,7 +82,7 @@ export default function AddProduct() {
             
             <div className="mb-3">
                 <label for="pid" >Product Quantity</label>
-                <input type="number" className="form-control" id="pid" placeholder={products.pid} onChange={(e) => {
+                <input type="number" className="form-control" id="pid" value={pid} onChange={(e) => {
 
                     setPID(e.target.value);
 
@@ -80,43 +92,30 @@ export default function AddProduct() {
            
             <div className="mb-3">
             <label for="radio" >Product Category</label>
-            <input type="text" className="form-control" id="pid" value={products.category} />
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="category 01" onChange={(e) => {
-
-                        setCategory(e.target.value);
-
-                    }} />
-                    <label class="form-check-label" for="category">
-                        category 01
-                    </label>
+            <input type="text" className="form-control" id="pid" value={category} />
+                {categorys.map((category) => (
+                        <div className="form-check" key={category._id}>
+                            <input
+                                className="form-check-input"
+                                type="radio"
+                                name="exampleRadios"
+                                id={`exampleRadios-${category._id}`}
+                                value={category.name}
+                                onChange={(e) => {
+                                    setCategory(e.target.value);
+                                }}
+                            />
+                            <label className="form-check-label" htmlFor={`exampleRadios-${category._id}`}>
+                                {category.name}
+                            </label>
+                        </div>
+                    ))}
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="category 02" onChange={(e) => {
-
-                        setCategory(e.target.value);
-
-                    }} />
-                    <label class="form-check-label" for="category">
-                        category 02
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="category 03" onChange={(e) => {
-
-                        setCategory(e.target.value);
-
-                    }} />
-                    <label class="form-check-label" for="category">
-                        category 03
-                    </label>
-                </div>
-            </div>
 
             <button type="submit" className="btn btn-primary">Update Product</button>
         </form>
 
-    
+    </div>
 
         </div>
     )

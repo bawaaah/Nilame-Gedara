@@ -14,6 +14,7 @@ import LowStockedList from './components/LowStockedList';
 import AddCategory from './components/AddCategory';
 import AllCategorys from './components/AllCategorys';
 import CategoryWise from './components/CategoryWise';
+import GenerateReports from './components/GenerateReports';
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
               <Route path="/AddCategory" element={<AddCategory />} /> 
               <Route path="/" element={<AllCategorys />} /> 
               <Route path="/CategoryWise/:cat" element={<CategoryWise />} /> 
+              <Route path="/GenerateReports" element={<GenerateReports />} /> 
+
 
 
 

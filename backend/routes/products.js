@@ -291,6 +291,20 @@ router.route("/getLowStockLIst").get((req, res) => {
     });
 });
 
+//CRUD - delete by category
+router.route("/deleteCat/:name").delete(async (req,res) => {
+    let categoryName = req.params.name;
+
+    await Product.deleteMany({ category: categoryName })
+        .then(() => {
+            res.status(200).send({ status: "Category Deleted" }) 
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with delete category", error: err.message }); 
+        });
+});
+
 
 
 

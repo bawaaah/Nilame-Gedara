@@ -121,10 +121,10 @@ export default function AllProducts(){
             </div>
 
             <div class="button-row">
-                <button>Generate Reports</button>
+                <Link to={`/GenerateReports`} className="button link-button">Generate Reports</Link>
                 <Link to={`/AllProducts`} className="button link-button">Manage Items</Link>
                 <Link to={`/add`} className="button link-button">Add New Items</Link>
-                <Link to={`/AddCategory`} className="button link-button">Add New Category</Link>
+                <Link to={`/AddCategory`} className="button link-button">Add New Category</Link> 
 
                 <form class="searchBar" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
