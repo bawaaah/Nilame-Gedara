@@ -14,6 +14,8 @@ router.route("/add").post(upload.single('image'), (req, res) => {
     const description = req.body.description;
     const rentalPrice = req.body.rentalPrice;
     const availability = true;
+    const isSelect = false;
+
 
     // Check if file was uploaded
     let image = null;
@@ -31,6 +33,7 @@ router.route("/add").post(upload.single('image'), (req, res) => {
         description,
         rentalPrice,
         availability,
+        isSelect,
         image
     });
 
