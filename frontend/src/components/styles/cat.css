@@ -1,0 +1,11 @@
+.cat{
+    display: flex;        /* Enables flexbox */
+    justify-content: center; /* Centers children horizontally in the container */        /* Full viewport height */
+    align-items: center;
+}
+.photo{
+    display: flex;
+}
+.pic{
+    width:500px
+}

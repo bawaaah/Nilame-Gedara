@@ -40,12 +40,14 @@ const productSchema = new Schema({ //object ekak hadanwa wage deyak
         type: Boolean,
         required: true
     },
+    isSelect: {
+        type:Boolean
+    },
     //add image
     image: {
         data: Buffer, // Binary data for image
         contentType: String // Mime type of the image
     }
-
 
 
 
