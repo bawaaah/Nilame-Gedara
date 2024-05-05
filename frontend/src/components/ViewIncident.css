@@ -1,0 +1,31 @@
+.incident-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .incident-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .incident-img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .incident-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .incident-description {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .incident-info {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }  
