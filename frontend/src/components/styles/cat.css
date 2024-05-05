@@ -3,9 +3,34 @@
     justify-content: center; /* Centers children horizontally in the container */        /* Full viewport height */
     align-items: center;
 }
-.photo{
+
+.photo-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 600px; /* Adjust based on your needs */
+}
+
+.photo-wrapper {
     display: flex;
+    white-space: nowrap;
+    animation: scroll 30s linear infinite; /* Adjust time based on desired speed */
 }
-.pic{
-    width:500px
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-150%); /* Adjust based on the actual width of the images */
+    }
 }
+
+.photo-container img {
+    width: auto; /* maintain original width */
+    height: 100%; /* full height of the container */
+    margin-right: 10px; /* space between images */
+}
+
+
+

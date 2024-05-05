@@ -31,8 +31,9 @@ function Footer() {
       <div className="footer-section">
         <h4>Follow Us</h4>
         <div className="social-links">
-          <img src={fb} alt="" className="logos" />
-          <img src={insta} alt="" className="logos" />
+          <a href="https://web.facebook.com/nilamegedara/?_rdc=1&_rdr"><img src={fb} alt="" className="logos" /></a>
+          <a href="https://www.instagram.com/nilamegedara/"><img src={insta} alt="" className="logos" /></a>
+          <a href=""></a>
           <img src={twit} alt="" className="logos" />
         </div>
       </div>
