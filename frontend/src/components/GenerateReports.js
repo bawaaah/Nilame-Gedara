@@ -3,6 +3,7 @@ import axios from "axios";
 import "./styles/AllProducts.css";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import reportImage from "./images/nilameLogo.png";
 
 export default function GenerateReports() {
     const [products, setProducts] = useState([]);
@@ -50,7 +51,7 @@ export default function GenerateReports() {
 
     return (
         <div className="AllProductContainer">
-            <h2>Generate Reports</h2>
+            <h2>{generateDocumentTitle()}</h2>
             <br />
                 <div className="filters">
                     {/* Checkbox to filter low stocked items */}
@@ -81,10 +82,10 @@ export default function GenerateReports() {
                     </label>
                 </div>
                 <div ref={componentPDF} style={{ width: "100%" }}>
-                <table>
+                <img src={reportImage} alt="Report" style={{ display: "block", margin: "auto", width: "100px" , paddingBottom:"10px"}} />
+                    <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>
                             <th>Product Quantity</th>
                             <th>Category</th>
@@ -117,7 +118,6 @@ export default function GenerateReports() {
                             })
                             .map((product) => (
                                 <tr key={product._id}>
-                                    <td>{product._id}</td>
                                     <td>{product.name}</td>
                                     <td>{product.pid}</td>
                                     <td>{product.category}</td>

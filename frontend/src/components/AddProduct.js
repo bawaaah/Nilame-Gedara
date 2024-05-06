@@ -30,29 +30,53 @@ export default function AddProduct() {
 
     function sendData(e) {
         e.preventDefault();
-
-        const formData = new FormData();
-        formData.append("name", name);
-        formData.append("pid", pid);
-        formData.append("category", category);
-        formData.append("description", description);
-        formData.append("rentalPrice", rentalPrice);
-        formData.append("image", image); // Append selected image to form data
-
-        axios
-            .post("http://localhost:8070/products/add", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            })
-            .then(() => {
-                alert("Product Added!");
-            })
-            .catch((err) => {
-                alert(err);
-            });
+    
+        if (!name || !pid || !category || !description || !rentalPrice || !image) {
+            alert("Please fill in all fields");
+            return;
+        }
+    
+        // Check if quantity and rental price are less than 0
+        if (pid <= 0) {
+            alert("Quantity cannot be less than 0");
+            return;
+        }
+        if (rentalPrice <= 0) {
+            alert("Rental price cannot be less than 0");
+            return;
+        }
+    
+        // Check if a product with the same name already exists
+        axios.get(`http://localhost:8070/products/check/${name}`).then((res) => {
+            if (res.data.exists) {
+                alert("Product with this name already exists");
+            } else {
+                const formData = new FormData();
+                formData.append("name", name);
+                formData.append("pid", pid);
+                formData.append("category", category);
+                formData.append("description", description);
+                formData.append("rentalPrice", rentalPrice);
+                formData.append("image", image); // Append selected image to form data
+    
+                axios
+                    .post("http://localhost:8070/products/add", formData, {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    })
+                    .then(() => {
+                        alert("Product Added!");
+                    })
+                    .catch((err) => {
+                        alert(err);
+                    });
+            }
+        }).catch((err) => {
+            alert(err);
+        });
     }
-
+    
     // Function to handle image selection
     function handleImageChange(e) {
         setImage(e.target.files[0]);

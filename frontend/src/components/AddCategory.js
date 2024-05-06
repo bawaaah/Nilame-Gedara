@@ -9,6 +9,11 @@ export default function AddCategory() {
     function sendData(e) {
         e.preventDefault();
 
+        if (!name || !description || !image) {
+            alert("Please fill in all fields");
+            return;
+        }
+
         const formData = new FormData();
         formData.append("name", name);
         formData.append("description", description);
