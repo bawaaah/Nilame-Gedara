@@ -14,23 +14,32 @@ export default function AddCategory() {
             return;
         }
 
+        axios.get(`http://localhost:8070/categorys/check/${name}`).then((res) => {
+            if (res.data.exists) {
+                alert("Category with this name already exists");
+            } else {
+
         const formData = new FormData();
         formData.append("name", name);
         formData.append("description", description);
         formData.append("image", image); // Append selected image to form data
 
-        axios
-            .post("http://localhost:8070/categorys/add", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            })
-            .then(() => {
-                alert("Category Added!");
-            })
-            .catch((err) => {
-                alert(err);
-            });
+            axios
+                .post("http://localhost:8070/categorys/add", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then(() => {
+                    alert("Category Added!");
+                })
+                .catch((err) => {
+                    alert(err);
+                });
+        }
+        }).catch((err) => {
+            alert(err);
+        });
     }
 
     // Function to handle image selection

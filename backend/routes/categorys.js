@@ -87,5 +87,20 @@ router.route("/delete/:name").delete(async (req,res) => {
         });
 });
 
+// Check if a product with a given name already exists
+router.route("/check/:productName").get((req, res) => {
+    const productName = req.params.productName;
+
+    Category.findOne({ name: productName }).then((category) => {
+        if (category) {
+            res.json({ exists: true });
+        } else {
+            res.json({ exists: false });
+        }
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: "Internal Server Error" });
+    });
+});
 
 module.exports = router;
