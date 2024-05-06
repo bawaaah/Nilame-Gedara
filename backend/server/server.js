@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const itemRoute = require("../routes/item")
+const incidentRouter = require("../route/incident.route")
 
 const app = express()
 
@@ -10,10 +10,10 @@ const bodyParser = require("body-parser")
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use("/api/catalog",itemRoute)
 
-const selectProductRoute = require("../routes/selectProduct")
-app.use("/selectProductRouter",selectProductRoute)
+app.use('/incidents', incidentRouter);
+
+
 
 
 
