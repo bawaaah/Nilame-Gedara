@@ -5,8 +5,11 @@ import total from "./images/total.png";
 import lowstock from "./images/lowstock.png";
 import { Link } from "react-router-dom";
 
+import './styles/Inventory.css'
+import Header from './Header';
+import NavBar from './NavBar';
 
-export default function DisposedItemList(){
+export default function DamageItemList(){
 
     const [products, setProducts] = useState([]);
     const [productCount, setProductCount] = useState(0);
@@ -24,7 +27,7 @@ export default function DisposedItemList(){
 
     function getProducts(){
 
-        axios.get("http://localhost:8070/products/getDisposed").then((res) => {
+        axios.get("http://localhost:8070/products/getDamaged").then((res) => {
             setProducts(res.data);
         }).catch((err) => {
             alert(err)
@@ -43,7 +46,7 @@ export default function DisposedItemList(){
     }
 
     function deleteProduct(productId) {
-        axios.put(`http://localhost:8070/products/deleteDisposed/${productId}`)
+        axios.put(`http://localhost:8070/products/deleteDamaged/${productId}`)
             .then((res) => {
                 alert("Product deleted successfully");
                 // After successful deletion, refresh the component
@@ -70,15 +73,28 @@ export default function DisposedItemList(){
     
 
     return(
+        <div>
+            <Header />
+            <div class="containerApp">
+
+                <div class="nav-container">
+                    <NavBar />
+                </div>
+
+                <div class="content-container">
+                    <div>
+                        <h1> Inventory Management System </h1>
+                        <hr className="big" />
+
         <div className="AllProductContainer">
 
-            <h2>List of Disposed Items</h2>
+            <h2> List of Damaged Items</h2>
 
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Disposed Quantity</th>
+                        <th>Damaged Quantity</th>
                         <th>Category</th>
                         <th>Actions</th>
                     </tr>
@@ -87,10 +103,12 @@ export default function DisposedItemList(){
                     {products.map((product) => (
                         <tr key={product._id}>
                             <td>{product.name}</td>
-                            <td>{product.DisposedQty}</td>
+                            <td>{product.DamagedQty}</td>
                             <td>{product.category}</td>
                             <td>
                                 <button className="button button-delete" onClick={() => deleteProduct(product._id)} >Delete</button>
+                                <Link to={`/AddDisposeItems/${product._id}`} className="button link-button dispose">Dispose Item</Link>
+
 
                             </td>
                         </tr>
@@ -99,6 +117,11 @@ export default function DisposedItemList(){
             </table>
 
 
+        </div>
+        </div>
+                </div>
+
+            </div>
         </div>
 
     )

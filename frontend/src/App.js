@@ -1,37 +1,26 @@
 import './App.css';
-import Header from './components/Header';
-import AddProduct from './components/AddProduct';
+import Header from './components/InventoryManagement/Header';
+import AddProduct from './components/InventoryManagement/AddProduct';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import AllProducts from './components/AllProducts';
-import NavBar from './components/NavBar';
-import EditProduct from './components/EditProduct';
-import AddDamageItems from './components/AddDamageItems';
-import DamageItemList from './components/DamagedItemList';
-import AddDisposeItems from './components/AddDisposeItems';
-import DisposedItemList from './components/DisposedItemList';
-import DisplaySingle from './components/displaySingle';
-import LowStockedList from './components/LowStockedList';
-import AddCategory from './components/AddCategory';
-import AllCategorys from './components/AllCategorys';
-import CategoryWise from './components/CategoryWise';
-import GenerateReports from './components/GenerateReports';
+import AllProducts from './components/InventoryManagement/AllProducts';
+import NavBar from './components/InventoryManagement/NavBar';
+import EditProduct from './components/InventoryManagement/EditProduct';
+import AddDamageItems from './components/InventoryManagement/AddDamageItems';
+import DamageItemList from './components/InventoryManagement/DamagedItemList';
+import AddDisposeItems from './components/InventoryManagement/AddDisposeItems';
+import DisposedItemList from './components/InventoryManagement/DisposedItemList';
+import DisplaySingle from './components/InventoryManagement/displaySingle';
+import LowStockedList from './components/InventoryManagement/LowStockedList';
+import AddCategory from './components/InventoryManagement/AddCategory';
+import AllCategorys from './components/InventoryManagement/AllCategorys';
+import CategoryWise from './components/InventoryManagement/CategoryWise';
+import GenerateReports from './components/InventoryManagement/GenerateReports';
 
 function App() {
   return (
-    <Router>
-    <Header />
-    <div class="containerApp">
-
-      <div class="nav-container">
-        <NavBar/>
-      </div>
-
-      <div class="content-container">
-          <div>
-            <h1> Inventory Management System </h1>
-            <hr className="big"/>
-            
+    <Router>            
             <Routes>
+              /** Inventory Management System - Urindu **/
               <Route path="/add" element={<AddProduct />} />
               <Route path="/AllProducts" element={<AllProducts />} />
               <Route path="/edit/:id" element={<EditProduct />} />
@@ -42,20 +31,10 @@ function App() {
               <Route path="/DisplaySingle/:id" element={<DisplaySingle />} /> 
               <Route path="/LowStockedList" element={<LowStockedList />} /> 
               <Route path="/AddCategory" element={<AddCategory />} /> 
-              <Route path="/" element={<AllCategorys />} /> 
+              <Route path="/AllCategorys" element={<AllCategorys />} /> 
               <Route path="/CategoryWise/:cat" element={<CategoryWise />} /> 
               <Route path="/GenerateReports" element={<GenerateReports />} /> 
-
-
-
-
-
-
             </Routes>
-          </div>
-      </div>
-
-    </div>
     </Router>
   );
 }
