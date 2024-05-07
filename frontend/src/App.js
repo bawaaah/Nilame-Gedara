@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import DiscountTable from './components/pmDiscounts';
+import Amount from './components/amount';
+import DiscountCalculator from './components/addDiscount';
+import PayBill from './components/ProceedPay';
+import PaymentTable from './components/pmPayment';
+import Admin from './components/adminpg';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/discount" element={<DiscountTable />} />
+          <Route path="/amount" element={<Amount />} />
+          <Route path="/addDiscount" element={<DiscountCalculator />} />
+          <Route path="/Pay" element={<PayBill />} />
+          <Route path="/payment" element={<PaymentTable />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
