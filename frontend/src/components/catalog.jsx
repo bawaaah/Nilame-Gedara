@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../components/styles/catalog.css'
 
 function Catalog() {
     const [items, setItems] = useState([]);
@@ -37,109 +38,33 @@ function Catalog() {
         }
     });
 
-    const styles = {
-        container: {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '30px',
-            padding: '80px',
-            backgroundColor: '#fcf4d9',
-            width: '800px',
-        },
-        item: {
-            border: '1px solid #ddd',
-            padding: '15px',
-            borderRadius: '10px',
-            backgroundColor: '#ffffff',
-            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            height: '100%',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        },
-        title: {
-            color: '#333',
-            fontSize: '20px',
-            fontWeight: '600',
-            textAlign: 'center',
-            marginBottom: '10px',
-        },
-        image: {
-            width: '100%',
-            height: '350px',
-            objectFit: 'cover',
-            borderRadius: '8px',
-        },
-        paragraph: {
-            color: '#666',
-            fontSize: '16px',
-            lineHeight: '1.5',
-        },
-        button: {
-            padding: '10px 20px',
-            fontSize: '16px',
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s, color 0.3s',
-            marginTop: '10px',
-        },
-        search: {
-            padding: '10px',
-            marginBottom: '10px',
-            fontSize: '14px',
-            width: '300px',
-            boxSizing: 'border-box',
-            border: '2px solid #ccc',
-            borderRadius: '10px',
-            outline: 'none',
-            transition: 'border-color 0.2s',
-        },
-        dropdown: {
-            padding: '10px',
-            marginBottom: '10px',
-            marginRight: '10px',
-            fontSize: '14px',
-            border: '2px solid #ccc',
-            borderRadius: '10px',
-            outline: 'none',
-            cursor: 'pointer',
-            backgroundColor: 'white',
-            transition: 'background-color 0.2s',
-        },
-        srch: {
-            textAlign: 'center',
-        }
-    };
+    
 
     return (
-        <div style={styles.srch}>
-            <select onChange={handleFilterChange} style={styles.dropdown}>
+        <div className="srch">
+            <select onChange={handleFilterChange} className="dropdown">
                 <option value="name">Product Name</option>
                 <option value="category">Category</option>
-            </select>
+            </select> <br /><br />
             <input
                 type="text"
                 placeholder={`Search by ${filter === "name" ? "product name" : "category"}...`}
                 value={search}
                 onChange={handleSearchChange}
-                style={styles.search}
-            />
-            <div style={styles.container}>
+                className="search"
+            /> <br /><br />
+            <div className="container">
                 {filteredItems.map((item, index) => (
-                    <div key={index} style={styles.item}>
-                        <p style={styles.title}>{item.name}</p>
+                    <div key={index} className="item">
+                        <p className="title">{item.name}</p>
                         {item.image && (
-                            <img src={`data:image;base64,${item.image}`} alt={item.name} style={styles.image} />
+                            <img src={`data:image;base64,${item.image}`} alt={item.name} className="image" />
                         )}
-                        <p style={styles.paragraph}>{item.category}</p>
-                        <p style={styles.paragraph}>Number of Quantity: {item.pQty}</p>
+                        <br />
+                        <p className="paragraph">{item.category}</p>
+                        <p className="paragraph">Number of Quantity: {item.pQty}</p>
                         <Link to={`/SingleItem/${item._id}`}>
-                            <button style={styles.button} value={item._id}>
+                            <button className="button" value={item._id}>
                                 View
                             </button>
                         </Link>
@@ -147,6 +72,7 @@ function Catalog() {
                 ))}
             </div>
         </div>
+
     );
 }
 

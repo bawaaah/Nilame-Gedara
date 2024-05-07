@@ -1,46 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-
-
-const Container = styled.div`
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-`;
-
-const Heading = styled.h5`
-  color: #333;
-  font-family: 'Arial', sans-serif;
-`;
-
-const Detail = styled.h5`
-  margin: 5px 0;
-  color: #666;
-  font-family: 'Arial', sans-serif;
-`;
-
-const Button = styled.button`
-  padding: 8px 16px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  font-family: 'Arial', sans-serif;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+import '../components/styles/checkout2.css'
 
 function Checkout() {
     const { id } = useParams();
@@ -85,16 +47,14 @@ function Checkout() {
         }
     }
 
-    const deleteOrder = () =>{
+    const deleteOrder = () => {
         axios.delete(`http://localhost:8070/checkout/deleteOrder/${orderDetails._id}`)
-            .then((req,res) => {
+            .then(() => {
                 alert("Product deleted successfully")
                 window.location.href = 'http://localhost:3000/home2';
-
             })
-            .catch((err) => {
+            .catch(err => {
                 alert("Error deleting product: " + err.message)
-                console.error(err)
             });
     }
 
@@ -103,20 +63,92 @@ function Checkout() {
     }
 
     return (
-        <Container className='main'>
-            <Heading>Product Name: {orderDetails.productName}</Heading>
-            <Heading>Order ID: {orderDetails.orderId}</Heading>
-            <Detail>Number of Bestman with Groom: <strong>{orderDetails.count}</strong></Detail>
-            <Detail>Unit Price: <strong>{orderDetails.unitPrice}</strong></Detail>
-            <Detail>Rental Date: <strong>{orderDetails.date ? orderDetails.date.split("T")[0] : 'Loading date...'}</strong></Detail>
-            <Detail>Total: <strong>RS:{orderDetails.total}</strong></Detail>
-            <div>
-                <Button onClick={generatePDF}>Generate and Print Report</Button>
-                <Link to={`/update/${orderDetails._id}`}><Button>Update</Button></Link>
-                <Button onClick={deleteOrder}>Delete</Button>
+        <div className="new">
+            <div style={styles.mainContainer}>
+                <div style={styles.styledContainer}>
+                    <div style={styles.header}>
+                        <h3 style={styles.heading}>Product Name: {orderDetails.productName}</h3>
+                    </div>
+                    <div style={styles.details}>
+                        <h5>Number of Bestman with Groom: <strong>{orderDetails.count}</strong></h5>
+                        <h5>Unit Price: <strong>{orderDetails.unitPrice}</strong></h5>
+                        <h5>Rental Date: <strong>{orderDetails.date ? orderDetails.date.split("T")[0] : 'Loading date...'}</strong></h5>
+                        <h5>Total: <strong>RS:{orderDetails.total}</strong></h5>
+                    </div>
+                    <div style={styles.buttonContainer}>
+                        <button style={styles.button} onClick={generatePDF}>Generate and Print Report</button>
+                        <Link to={`/update/${orderDetails._id}`} style={{ textDecoration: 'none' }}>
+                            <button style={styles.button}>Update</button>
+                        </Link>
+                        <button style={styles.button} onClick={deleteOrder}>Delete</button>
+                    </div>
+                </div>
             </div>
-        </Container>
+        </div>
     );
 }
+
+const styles = {
+    mainContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '20px',
+        backgroundColor: '#f4f4f4',
+        minHeight: '100vh',
+    },
+    styledContainer: {
+        width: '90%',
+        maxWidth: '600px',
+        background: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+        padding: '20px',
+        margin: '20px',
+        borderLeft: '5px solid #c89513'
+    },
+    header: {
+        paddingBottom: '10px',
+        borderBottom: '2px dashed #c89513',
+        marginBottom: '20px'
+    },
+    heading: {
+        fontSize: '22px',
+        fontWeight: 'bold',
+        color: '#333',
+        textAlign: 'center'
+    },
+    details: {
+        fontSize: '16px',
+        color: '#666',
+        marginBottom: '10px'
+    },
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '10px',
+        marginTop: '20px'
+    },
+    button: {
+        flexGrow: 1,
+        padding: '10px 15px',
+        fontSize: '16px',
+        border: 'none',
+        borderRadius: '5px',
+        backgroundColor: '#c89513',
+        color: 'white',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease-in-out, transform 0.2s ease-in-out',
+        '&:hover': {
+            backgroundColor: '#a57a10',
+            transform: 'translateY(-2px)'
+        },
+        '&:active': {
+            backgroundColor: '#805c0d',
+            transform: 'translateY(1px)'
+        }
+    }
+};
 
 export default Checkout;

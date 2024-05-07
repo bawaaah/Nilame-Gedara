@@ -8,8 +8,8 @@ router.route('/add').post((req,res) => {
     const productName = req.body.productName
     const count = Number(req.body.count)
     const unitPrice = Number(req.body.unitPrice)
-    const date = Date(req.body.date)
-    const total = (count + 1)*unitPrice
+    const date = (req.body.date)
+    const total = (count)*unitPrice
     const iID = req.body.iID
 
     const newOrder = new order({

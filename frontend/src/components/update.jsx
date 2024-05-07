@@ -1,119 +1,120 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../components/styles/checkout.css';
 
-const Container = styled.div`
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #f0f0f0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-`;
-
-const Title = styled.h2`
-  text-align: center;
-  color: #333;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Label = styled.label`
-  margin-bottom: 5px;
-  color: #666;
-  font-size: 16px;
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-
-  &:focus {
-    border-color: #0056b3;
+// CSS Styles defined as a JavaScript object
+const styles = {
+  container: {
+    maxWidth: '600px',
+    margin: '60px auto',
+    padding: '30px',
+    background: '#ffffff',
+    borderRadius: '12px',
+    boxShadow: '0 6px 12px rgba(0,0,0,0.15)',
+    backgroundImage: 'url("../images/cover2.jpeg")'
+  },
+  title: {
+    textAlign: 'center',
+    color: '#c89513',
+    marginBottom: '20px'
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  label: {
+    marginBottom: '8px',
+    color: '#555',
+    fontSize: '18px',
+    fontWeight: '500'
+  },
+  input: {
+    padding: '12px',
+    marginBottom: '20px',
+    border: '2px solid #c89513',
+    borderRadius: '6px',
+    fontSize: '16px',
+    transition: 'border-color 0.3s ease-in-out',
+  },
+  button: {
+    padding: '12px',
+    backgroundColor: '#c89513',
+    color: 'white',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontSize: '18px',
+    transition: 'background-color 0.3s, transform 0.2s',
+    margin: '10px',
+    width: '100%'
+  },
+  back: {
+    display: 'flex'
   }
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+};
 
 function Update() {
-  const { id } = useParams();
-  const [itemDetails, setItems] = useState({ count: '', date: '' });
-  const [count, setCount] = useState('');
-  const [date, setDate] = useState('');
-  const [iID, setiID] = useState('');
+  const { id } = useParams(); // Fetch the id from the URL parameters
+  const navigate = useNavigate(); // Hook for navigation
+  const [itemDetails, setItems] = useState({ count: '', date: '' }); // State for item details
 
+  // Fetch item details from the server when component mounts
   useEffect(() => {
-    getItems();
-  }, []);
-
-  function getItems() {
     axios.get(`http://localhost:8070/checkout/getOrder2/${id}`)
       .then(res => {
-        setItems(res.data);
-        setiID(res.data.iID);
+        setItems(res.data); // Set fetched data to state
       })
       .catch(err => {
-        alert("Error: " + err);
+        alert("Error: " + err); // Handle any errors
       });
-  }
+  }, [id]);
 
-  function updteDate(e) {
-    e.preventDefault();
-    const formattedDate = formatDate(date);
-    const data = { count, date: formattedDate };
+  // Handle form submission
+  function handleSubmit(e) {
+    e.preventDefault(); // Prevent default form submission behavior
+    const data = { count: itemDetails.count, date: itemDetails.date.split('T')[0] }; // Prepare data for submission
 
     axios.put(`http://localhost:8070/checkout/updateOrder/${id}`, data)
       .then(() => {
-        alert("Product Updated successfully");
-        window.location.href = `http://localhost:3000/Checkout/${iID}`;
+        alert("Product Updated successfully"); // Alert user on success
+        navigate(-1); // Navigate back to the previous page
       })
-      .catch((err) => {
-        alert("Error Updating product: " + err.message);
-        console.error(err);
+      .catch(err => {
+        alert("Error Updating product: " + err.message); // Alert user on error
       });
   }
 
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
   return (
-    <Container>
-      <Title>Update Order Details</Title>
-      <Form onSubmit={updteDate}>
-        <Label htmlFor="count">Number of Bestman with Groom:</Label>
-        <Input id="count" type="text" value={itemDetails.count} onChange={(e) => setCount(e.target.value)} />
+    <div className="MAIN">
+      <div style={styles.container}>
+        <h2 style={styles.title}>Update Order Details</h2>
+        <form onSubmit={handleSubmit} style={styles.form}>
+          <label style={styles.label} htmlFor="count">Number of Bestman with Groom:</label>
+          <input
+            style={styles.input}
+            id="count"
+            type="text"
+            value={itemDetails.count}
+            onChange={(e) => setItems({...itemDetails, count: e.target.value})}
+          />
 
-        <Label htmlFor="date">Rental Date:</Label>
-        <Input id="date" type="date" value={itemDetails.date} onChange={(e) => setDate(e.target.value)} />
-
-        <Button type="submit">Update</Button>
-      </Form>
-    </Container>
+          <label style={styles.label} htmlFor="date">Rental Date:</label>
+          <input
+            style={styles.input}
+            id="date"
+            type="date"
+            value={itemDetails.date.split('T')[0]}
+            onChange={(e) => setItems({...itemDetails, date: e.target.value})}
+          />
+          <div style={styles.back}>
+            <button style={styles.button} type="submit">Update</button>
+            <button style={styles.button} onClick={() => navigate(-1)} type="button">Back</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
   );
 }
 

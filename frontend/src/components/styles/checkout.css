@@ -1,3 +1,16 @@
-.main{
-    background-color: blue;
+
+.MAIN{
+    background-image: url('../images/checkout.jpeg');
+    padding: 100px;
+    width: 100%;
+    background-size: cover; /* Ensures the background covers the entire area */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the div takes the full height of the viewport */
+    width: 100vw; /* Ensures the div takes the full width of the viewport */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
 }
