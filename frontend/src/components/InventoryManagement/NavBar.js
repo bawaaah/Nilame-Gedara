@@ -14,7 +14,7 @@ function NavBar() {
             <li><a href="#"><img src={order} alt="Order Management" /> Order Management</a></li>
             <li><a href="#"><img src={dashboard} alt="Financial Manager" /> Financial Manager</a></li>
             <li><a href="#"><img src={dashboard} alt="Employee Management" /> Employee Management</a></li>
-            <li><Link to="/"><img src={stockImg} alt="Stock Management" /> Stock Management</Link></li>
+            <li><Link to="/AllCategorys"><img src={stockImg} alt="Stock Management" /> Stock Management</Link></li>
             <li><a href="#"><img src={dashboard} alt="Supplier Management" /> Supplier Management</a></li>
             <li><a href="#"><img src={dashboard} alt="Purchasing Management" /> Purchasing Management</a></li>
         </ul>

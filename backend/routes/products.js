@@ -14,6 +14,8 @@ router.route("/add").post(upload.single('image'), (req, res) => {
     const description = req.body.description;
     const rentalPrice = req.body.rentalPrice;
     const availability = true;
+    const isSelect = false;
+
 
     // Check if file was uploaded
     let image = null;
@@ -31,6 +33,7 @@ router.route("/add").post(upload.single('image'), (req, res) => {
         description,
         rentalPrice,
         availability,
+        isSelect,
         image
     });
 
@@ -305,7 +308,21 @@ router.route("/deleteCat/:name").delete(async (req,res) => {
         });
 });
 
+// Check if a product with a given name already exists
+router.route("/check/:productName").get((req, res) => {
+    const productName = req.params.productName;
 
+    Product.findOne({ name: productName }).then((product) => {
+        if (product) {
+            res.json({ exists: true });
+        } else {
+            res.json({ exists: false });
+        }
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: "Internal Server Error" });
+    });
+});
 
 
 
