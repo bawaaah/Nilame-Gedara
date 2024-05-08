@@ -45,7 +45,7 @@ const DiscountCalculator = () => {
     <div>
     <NavigationBar />
     <Container className="vh-100 d-flex justify-content-center align-items-center">
-      <Card className="w-80" style={{ backgroundColor: 'lightpink' }}>
+      <Card className="w-100" style={{ backgroundColor: 'lightpink' }}>
         <Row noGutters>
           
           <Col md={6}>
