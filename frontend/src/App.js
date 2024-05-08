@@ -15,6 +15,12 @@ import AddCategory from './components/InventoryManagement/AddCategory';
 import AllCategorys from './components/InventoryManagement/AllCategorys';
 import CategoryWise from './components/InventoryManagement/CategoryWise';
 import GenerateReports from './components/InventoryManagement/GenerateReports';
+import DiscountTable from './components/pmDiscounts';
+import Amount from './components/amount';
+import DiscountCalculator from './components/addDiscount';
+import PayBill from './components/ProceedPay';
+import PaymentTable from './components/pmPayment';
+import Admin from './components/adminpg';
 
 function App() {
   return (
@@ -34,6 +40,13 @@ function App() {
               <Route path="/AllCategorys" element={<AllCategorys />} /> 
               <Route path="/CategoryWise/:cat" element={<CategoryWise />} /> 
               <Route path="/GenerateReports" element={<GenerateReports />} /> 
+
+              <Route path="/discount" element={<DiscountTable />} />
+              <Route path="/amount" element={<Amount />} />
+              <Route path="/addDiscount" element={<DiscountCalculator />} />
+              <Route path="/Pay" element={<PayBill />} />
+              <Route path="/payment" element={<PaymentTable />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
     </Router>
   );
