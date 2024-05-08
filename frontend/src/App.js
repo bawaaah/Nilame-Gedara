@@ -1,9 +1,9 @@
 import './App.css';
-import Header from './components/InventoryManagement/Header';
+import Header from './components/Header';
 import AddProduct from './components/InventoryManagement/AddProduct';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import AllProducts from './components/InventoryManagement/AllProducts';
-import NavBar from './components/InventoryManagement/NavBar';
+import NavBar from './components/NavBar';
 import EditProduct from './components/InventoryManagement/EditProduct';
 import AddDamageItems from './components/InventoryManagement/AddDamageItems';
 import DamageItemList from './components/InventoryManagement/DamagedItemList';
@@ -15,12 +15,13 @@ import AddCategory from './components/InventoryManagement/AddCategory';
 import AllCategorys from './components/InventoryManagement/AllCategorys';
 import CategoryWise from './components/InventoryManagement/CategoryWise';
 import GenerateReports from './components/InventoryManagement/GenerateReports';
-import DiscountTable from './components/pmDiscounts';
-import Amount from './components/amount';
-import DiscountCalculator from './components/addDiscount';
-import PayBill from './components/ProceedPay';
-import PaymentTable from './components/pmPayment';
-import Admin from './components/adminpg';
+
+import DiscountTable from './components/PaymentManagement/pmDiscounts';
+import Amount from './components/PaymentManagement/amount';
+import DiscountCalculator from './components/PaymentManagement/addDiscount';
+import PayBill from './components/PaymentManagement/ProceedPay';
+import PaymentTable from './components/PaymentManagement/pmPayment';
+import Admin from './components/PaymentManagement/adminpg';
 
 function App() {
   return (

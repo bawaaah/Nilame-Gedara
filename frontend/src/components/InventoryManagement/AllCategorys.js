@@ -8,8 +8,8 @@ import total from "./images/total.png";
 import lowstock from "./images/lowstock.png";
 
 import './styles/Inventory.css'
-import Header from './Header';
-import NavBar from './NavBar';
+import Header from '../Header';
+import NavBar from '../NavBar';
 
 export default function AllCategorys() {
     const [categories, setCategories] = useState([]);

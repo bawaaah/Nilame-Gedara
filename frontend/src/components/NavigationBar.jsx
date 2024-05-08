@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
-import logo from '../images/nilameLogo.png'
+import logo from './images/nilameLogo.png'
 
 const styles = {
   navBar: {

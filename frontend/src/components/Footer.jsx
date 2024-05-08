@@ -1,8 +1,8 @@
 import React from 'react'
 import '../components/styles/footer.css'
-import fb from '../images/fb.png'
-import insta from '../images/insta.png'
-import twit from '../images/twit.png'
+import fb from './images/fb.png'
+import insta from './images/insta.png'
+import twit from './images/twit.png'
 
 
 function Footer() {

@@ -3,8 +3,8 @@ import axios from "axios";
 import { useParams } from 'react-router-dom';
 
 import './styles/Inventory.css'
-import Header from './Header';
-import NavBar from './NavBar';
+import Header from '../Header';
+import NavBar from '../NavBar';
 
 export default function AddDisposeItems() {
 
