@@ -9,7 +9,7 @@ import Header from './Header';
 import NavBar from './NavBar';
 
 
-export default function DisplaySingle() {
+export default function DisplaySingleEmp() {
     const { id } = useParams();
     const [employee, setEmployee] = useState({});
 

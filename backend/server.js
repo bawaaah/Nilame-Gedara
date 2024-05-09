@@ -32,6 +32,8 @@ const paymentRouter = require("./routes/payments.js");
 const paymentController = require('./routes/paymentController.js');
 const discountRouter = require('./routes/discount.js')
 
+const employeeRouter = require("./routes/employees.js");
+
 app.use("/products",productRouter); //assign wela thiyena file eka load wenna
 app.use("/categorys",categoryRouter);
 
@@ -39,6 +41,8 @@ app.use('/auth', paymentController);
 
 app.use("/discount",discountRouter);
 app.use("/payment",paymentRouter);
+
+app.use("/employee",employeeRouter);
 
 app.listen(PORT, () => { //ara port eka listn krnna
     console.log(`Server is up and running on port number: ${PORT}`);

@@ -80,7 +80,7 @@ function AllEmployees() {
                             <td>{employee.email}</td>
                             <td>{employee.gender}</td>
                             <td>
-                                <Link to={`/DisplaySingle/${employee._id}`} className="button">View</Link>
+                                <Link to={`/DisplaySingleEmp/${employee._id}`} className="button">View</Link>
                             </td>
                         </tr>
                     ))}

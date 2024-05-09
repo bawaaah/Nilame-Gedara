@@ -25,7 +25,7 @@ import Admin from './components/PaymentManagement/adminpg';
 
 import AddEmployee from './components/AddEmployee';
 import MainPage from './components/MainPage';
-import DisplaySingle from './components/displaysingle';
+import DisplaySingleEmp from './components/displaysingle';
 import AllEmployees from './components/AllEmployees';
 import UpdateEmployee from './components/UpadateEmployee';
 
@@ -58,7 +58,7 @@ function App() {
 
               <Route path="/AddEmployee" element={<AddEmployee />} />
               <Route path="/AllEmployees" element={<AllEmployees />} />
-              <Route path="/DisplaySingle/:id" element={<DisplaySingle />} />
+              <Route path="/DisplaySingleEmp/:id" element={<DisplaySingleEmp />} />
               <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} />
               <Route path="/" element={<MainPage />} />
 

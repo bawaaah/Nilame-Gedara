@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Header from './Header';
 import NavBar from './NavBar';
+import './styles/addEmp.css';
 
 
 function AddEmployee() {
@@ -51,13 +52,13 @@ function AddEmployee() {
     return (
         <div>
             <Header />
-    <div class="containerApp">
+    <div className="containerApp">
 
-      <div class="nav-container">
+      <div className="nav-container">
         <NavBar/>
       </div>
 
-      <div class="content-container">
+      <div className="content-container">
           <div>
             <h1> Employee Management System </h1>
             <hr className="big"/>
