@@ -23,6 +23,13 @@ import PayBill from './components/PaymentManagement/ProceedPay';
 import PaymentTable from './components/PaymentManagement/pmPayment';
 import Admin from './components/PaymentManagement/adminpg';
 
+import AddEmployee from './components/AddEmployee';
+import MainPage from './components/MainPage';
+import DisplaySingle from './components/displaysingle';
+import AllEmployees from './components/AllEmployees';
+import UpdateEmployee from './components/UpadateEmployee';
+
+
 function App() {
   return (
     <Router>            
@@ -48,6 +55,13 @@ function App() {
               <Route path="/Pay" element={<PayBill />} />
               <Route path="/payment" element={<PaymentTable />} />
               <Route path="/admin" element={<Admin />} />
+
+              <Route path="/AddEmployee" element={<AddEmployee />} />
+              <Route path="/AllEmployees" element={<AllEmployees />} />
+              <Route path="/DisplaySingle/:id" element={<DisplaySingle />} />
+              <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} />
+              <Route path="/" element={<MainPage />} />
+
             </Routes>
     </Router>
   );

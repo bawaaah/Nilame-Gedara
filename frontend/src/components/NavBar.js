@@ -13,7 +13,7 @@ function NavBar() {
             <li><a href="#"><img src={dashboard} alt="Dashboard" /> Dashboard</a></li>
             <li><a href="#"><img src={order} alt="Order Management" /> Order Management</a></li>
             <li><Link to="/admin"><img src={dashboard} alt="Financial Manager" /> Financial Manager</Link></li>
-            <li><a href="#"><img src={dashboard} alt="Employee Management" /> Employee Management</a></li>
+            <li><Link to="/"><img src={stockImg} alt="Employee Management" /> Employee Management</Link></li>
             <li><Link to="/AllCategorys"><img src={stockImg} alt="Stock Management" /> Stock Management</Link></li>
             <li><a href="#"><img src={dashboard} alt="Supplier Management" /> Supplier Management</a></li>
             <li><a href="#"><img src={dashboard} alt="Purchasing Management" /> Purchasing Management</a></li>
