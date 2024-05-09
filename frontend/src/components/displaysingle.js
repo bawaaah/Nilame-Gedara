@@ -4,6 +4,10 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { jsPDF } from "jspdf";
 import './styles/displaySingle.css';
+import logo from "./images/nilameLogo.png";
+import Header from './Header';
+import NavBar from './NavBar';
+
 
 export default function DisplaySingle() {
     const { id } = useParams();
@@ -35,8 +39,10 @@ export default function DisplaySingle() {
 
     function generatePDF() {
         const doc = new jsPDF();
-        doc.text("Employee Details", 10, 10);
-        let yPos = 20;
+        const imgData = logo; // Use the imported logo image
+        doc.addImage(imgData, 'JPEG', 10, 5, 40, 40); // Adjust the coordinates and dimensions as needed
+        doc.text("Employee Details", 60, 20); // Adjust the position as needed
+        let yPos = 70; // Adjust the starting Y position as needed
 
         Object.entries(employee).forEach(([key, value]) => {
             doc.text(`${key}: ${value}`, 10, yPos);
@@ -47,7 +53,19 @@ export default function DisplaySingle() {
     }
 
     return (
-        <div className="container">
+        <div>
+<Header />
+    <div class="containerApp">
+
+      <div class="nav-container">
+        <NavBar/>
+      </div>
+
+      <div class="content-container">
+          <div>
+            <h1> Employee Management System </h1>
+            <hr className="big"/>
+            <div className="container">
             <div className="product-details">
                 <div className="detailss">
                     <div className="detail">
@@ -83,5 +101,13 @@ export default function DisplaySingle() {
                 </div>
             </div>
         </div>
+            
+            
+          </div>
+      </div>
+
+    </div>
+</div>
+        
     );
 }

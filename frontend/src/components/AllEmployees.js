@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import './styles/AllEmployees.css'
+import Header from './Header';
+import NavBar from './NavBar';
 
 function AllEmployees() {
     const [employees, setEmployees] = useState([]);
@@ -32,7 +34,20 @@ function AllEmployees() {
     }, [searchTerm, employees]);
 
     return (
-        <div className="container">
+        <div>
+            <Header />
+            <div class="containerApp">
+
+            <div class="nav-container">
+                <NavBar/>
+            </div>
+
+            <div class="content-container">
+                <div>
+                    <h1> Employee Management System </h1>
+                    <hr className="big"/>
+                    
+                    <div className="container">
             
             <div className="search-container">
                 <input
@@ -72,6 +87,11 @@ function AllEmployees() {
                 </tbody>
             </table>
         </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
     )
 }
 

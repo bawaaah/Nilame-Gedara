@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios" ;
 import { useParams } from 'react-router-dom';
+import Header from './Header';
+import NavBar from './NavBar';
 
 
 export default function AddEmployee() {
@@ -53,7 +55,7 @@ export default function AddEmployee() {
 
         //if authentication we can add another parameter
         axios.put(`http://localhost:8070/employee/update/${id}`, newEmployee ).then(() => {
-            alert("Product Updated!")
+            alert("Employee Updated!")
         }).catch((err) => {
             alert(err)
         })
@@ -61,8 +63,20 @@ export default function AddEmployee() {
     }
 
     return (
+        <div>
+            <Header />
+    <div class="containerApp">
 
-        <div className="containerFrom">
+      <div class="nav-container">
+        <NavBar/>
+      </div>
+
+      <div class="content-container">
+          <div>
+            <h1> Employee Management System </h1>
+            <hr className="big"/>
+            
+            <div className="containerFrom">
 
         <div class="form-container">
 
@@ -128,13 +142,20 @@ export default function AddEmployee() {
             </div>
 
             <div className="mb-3">
-                <label for="gender" >Employee Gender</label>
-                <input type="text" className="form-control" id="gender" value={gender} onChange={(e) => {
-
-                    setGender(e.target.value);
-
-                }} />
-            </div>
+                    <label className="form-label">Gender</label>
+                    <div>
+                        <label>
+                            <input type="radio" name="gender" value="Male" onChange={(e) => setGender(e.target.value)} />
+                            Male
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="gender" value="Female" onChange={(e) => setGender(e.target.value)} />
+                            Female
+                        </label>
+                    </div>
+                </div>
 
            
            
@@ -142,7 +163,11 @@ export default function AddEmployee() {
         </form>
 
     </div>
-
-        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+        
     )
 }

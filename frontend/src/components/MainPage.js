@@ -1,5 +1,6 @@
 import React from "react";
-
+import Header from './Header';
+import NavBar from './NavBar';
 
 function MainPage(){
 
@@ -12,6 +13,20 @@ function MainPage(){
       };
     
     return(
+    <div>
+      <Header />
+    <div class="containerApp">
+
+      <div class="nav-container">
+        <NavBar/>
+      </div>
+
+      <div class="content-container">
+          <div>
+            <h1> Employee Management System </h1>
+            <hr className="big"/>
+            
+            </div>
     <ul class="/">
        <button className="button button-delete" onClick={handleAddEmployeeClick}>
         Add Employee
@@ -20,6 +35,11 @@ function MainPage(){
         View Employee
       </button>
     </ul>
+          </div>
+      </div>
+
+    </div>
+    
     )
 
 

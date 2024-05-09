@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Header from './Header';
+import NavBar from './NavBar';
+
 
 function AddEmployee() {
     const [name, setName] = useState("");
@@ -46,7 +49,20 @@ function AddEmployee() {
     }
 
     return (
-        <div className="form-container">
+        <div>
+            <Header />
+    <div class="containerApp">
+
+      <div class="nav-container">
+        <NavBar/>
+      </div>
+
+      <div class="content-container">
+          <div>
+            <h1> Employee Management System </h1>
+            <hr className="big"/>
+            
+            <div className="form-container">
             <form onSubmit={sendData}>
                 <h1>Add Employee</h1>
                 <div className="mb-3">
@@ -98,6 +114,11 @@ function AddEmployee() {
                 <button type="submit" className="button">Submit</button>
             </form>
         </div>
+          </div>
+      </div>
+    </div>
+    </div>
+        
     );
 }
 
