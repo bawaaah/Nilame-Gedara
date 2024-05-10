@@ -1,0 +1,99 @@
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background: #fcf4d9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 0px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.leftSection {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.rightSection {
+    flex: 2;
+}
+
+.imageContainer {
+    text-align: center;
+}
+
+.imageFrame {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #c89513; /* Minimalistic design */
+    border-radius: 0;
+    width: 100%;
+    transition: border-color 0.3s;
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.input:focus {
+    border-color: #333; /* Focus effect */
+    outline: none;
+}
+
+.button {
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #c89513;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #a57a10;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    background-color: #805c0d;
+    transform: translateY(1px);
+}
+
+
+
+.main{
+    background-image: url('../images/singleItem.jpeg');
+    padding: 100px;
+    width: 100%;
+    background-size: cover; /* Ensures the background covers the entire area */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the div takes the full height of the viewport */
+    width: 100vw; /* Ensures the div takes the full width of the viewport */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+}
