@@ -1,4 +1,5 @@
 //package ekama adala eka variable ekakata save karanawa, ethakota variable ekenma ekapara call karanna puluwan :)
+import router from "./routes/route.js"
 
 const express = require("express"); //declare dependencies
 const mongoose = require("mongoose");
@@ -36,6 +37,8 @@ const employeeRouter = require("./routes/employees.js");
 
 const itemRoute = require("./routes/item")
 
+
+
 app.use("/products",productRouter); //assign wela thiyena file eka load wenna
 app.use("/categorys",categoryRouter);
 
@@ -59,6 +62,8 @@ app.use("/order",order)
 
 const checkout = require('./routes/checkout')
 app.use("/checkout",checkout)
+
+app.use('/api', router)
 
 app.listen(PORT, () => { //ara port eka listn krnna
     console.log(`Server is up and running on port number: ${PORT}`);

@@ -1,0 +1,11 @@
+.glass{
+    height: calc(100% - 2rem);
+}
+
+.profile_img{
+    @apply w-40 cursor-pointer;
+}
+
+.textbox{
+    @apply w-3/4;
+}
