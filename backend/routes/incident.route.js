@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Incident = require('../model/incident.model');
+const Incident = require('../models/incident.model');
 
 // Create a new incident
 router.post('/', async (req, res) => {
