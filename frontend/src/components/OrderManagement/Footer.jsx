@@ -1,8 +1,15 @@
 import React from 'react'
+<<<<<<<< HEAD:frontend/src/components/OrderManagement/Footer.jsx
 import '../styles/footer.css'
 import fb from '../images/fb.png'
 import insta from '../images/insta.png'
 import twit from '../images/twit.png'
+========
+import '../components/styles/footer.css'
+import fb from './images/fb.png'
+import insta from './images/insta.png'
+import twit from './images/twit.png'
+>>>>>>>> 024461d8d621f032b341da16d38a710727efaa21:frontend/src/components/Footer.jsx
 
 
 function Footer() {

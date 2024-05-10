@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+<<<<<<< HEAD
 import reportWebVitals from './reportWebVitals';
+=======
+>>>>>>> parent of 39d00c7 (Merge branch 'pathum' into dev)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
