@@ -116,7 +116,7 @@ function Checkout() {
                         <h5>Number of Bestman with Groom: <strong>{orderDetails.count}</strong></h5>
                         <h5>Unit Price: <strong>{orderDetails.unitPrice}</strong></h5>
                         <h5>Rental Date: <strong>{orderDetails.date ? orderDetails.date.split("T")[0] : 'Loading date...'}</strong></h5>
-                        <h5>Total: <strong>RS:{orderDetails.total}</strong></h5>
+                        <h5>Total: <strong>RS:{orderDetails.unitPrice*orderDetails.count}</strong></h5>
                     </div>
                     <div style={styles.buttonContainer}>
                         <button style={styles.button} onClick={generatePDF}>Generate and Print Report</button>
