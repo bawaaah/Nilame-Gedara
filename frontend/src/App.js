@@ -1,9 +1,8 @@
 import './App.css';
-import Header from './components/Header';
 import AddProduct from './components/InventoryManagement/AddProduct';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import AllProducts from './components/InventoryManagement/AllProducts';
-import NavBar from './components/NavBar';
+
 import EditProduct from './components/InventoryManagement/EditProduct';
 import AddDamageItems from './components/InventoryManagement/AddDamageItems';
 import DamageItemList from './components/InventoryManagement/DamagedItemList';

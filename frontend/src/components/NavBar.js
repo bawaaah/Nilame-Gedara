@@ -11,7 +11,7 @@ function NavBar() {
 
         <ul class="nav">
             <li><a href="#"><img src={dashboard} alt="Dashboard" /> Dashboard</a></li>
-            <li><a href="#"><img src={order} alt="Order Management" /> Order Management</a></li>
+            <li><Link to="/catalogManagement"><img src={dashboard} alt="Catalog Management" /> Catalog Management</Link></li>
             <li><Link to="/admin"><img src={dashboard} alt="Financial Manager" /> Financial Manager</Link></li>
             <li><Link to="/"><img src={stockImg} alt="Employee Management" /> Employee Management</Link></li>
             <li><Link to="/AllCategorys"><img src={stockImg} alt="Stock Management" /> Stock Management</Link></li>

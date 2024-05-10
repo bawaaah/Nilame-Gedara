@@ -1,19 +1,31 @@
 import React from 'react'
-import NavBar from './NavBar'
+import NavBar from '../NavBar'
 import SelectProduct from './selectProduct'
-import '../styles/home2.css'
+import Header from '../Header';
 
 function home() {
   return (
-    <div>
-      <br />
-      <center><h1>Catalog Management System</h1></center>
-      <div className='mid'>
-        <div><NavBar /></div>
-        <div><SelectProduct /></div>
-      </div>
-      
-      </div>
+    
+              <div>
+            <Header />
+            <div class="containerApp">
+
+                <div class="nav-container">
+                    <NavBar />
+                </div>
+
+                <div class="content-container">
+                    <div>
+                        <h1> Inventory Management System </h1>
+                        <hr className="big" />
+
+                        <div><SelectProduct /></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
   )
 }
 

@@ -53,7 +53,7 @@ function Catalog() {
                 onChange={handleSearchChange}
                 className="search"
             /> <br /><br />
-            <div className="container">
+            <div className="containerb">
                 {filteredItems.map((item, index) => (
                     <div key={index} className="item">
                         <p className="title">{item.name}</p>
