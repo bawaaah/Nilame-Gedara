@@ -1,8 +1,8 @@
 import React from 'react'
 import Catalog from './catalog'
-import NavigationBar from './NavigationBar'
+import NavigationBar from '../NavigationBar'
 import '../styles/cat.css'
-import Footer from './Footer'
+import Footer from '../Footer'
 import cover from '../images/cover.jpeg'
 import cover2 from '../images/cover2.jpeg'
 

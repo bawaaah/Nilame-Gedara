@@ -124,7 +124,7 @@ export default function AllCategorys() {
                                 <Link to={`/add`} className="button link-button">Add New Items</Link>
                                 <Link to={`/AddCategory`} className="button link-button">Add New Category</Link>
 
-                                <form class="searchBar" role="search">
+                                <form class="searchBarU" role="search">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
                                 </form>
 
