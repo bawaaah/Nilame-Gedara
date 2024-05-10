@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 8070; //8070 OR 8070 eka nattan wena available ekak
 
 app.use(cors()); //declare karapuwa use karanawa
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 
 const URL = "mongodb+srv://bhawan:200132400588@atlascluster.fl5bp73.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"; 
 
