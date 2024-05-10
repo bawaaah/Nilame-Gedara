@@ -324,6 +324,32 @@ router.route("/check/:productName").get((req, res) => {
     });
 });
 
+// Route to reduce quantity when a customer purchases a product
+router.post('/purchase', async (req, res) => {
+    const { productName, purchasedQuantity } = req.body; // Assuming the request contains productName and purchasedQuantity
+
+    try {
+        // Find the product by name
+        const product = await Product.findOne({ name: productName });
+
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        if (product.pid < purchasedQuantity) {
+            return res.status(400).json({ error: 'Insufficient quantity available' });
+        }
+
+        // Update product quantity
+        product.pid -= purchasedQuantity;
+        await product.save();
+
+        return res.status(200).json({ message: 'Product quantity reduced successfully' });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 
 
