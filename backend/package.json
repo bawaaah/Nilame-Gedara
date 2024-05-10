@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/server.js",
-    "dev": "nodemon ./server/server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +19,7 @@
     "jspdf": "^2.5.1",
     "mongoose": "^8.2.2",
     "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",

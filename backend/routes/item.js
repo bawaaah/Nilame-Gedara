@@ -4,7 +4,6 @@ const itemSchema = require('../models/item')
 const Product = require('../models/product')
 
 
-
 router.route('/add').post((req,res)=>{
     const pid = req.body.pid;
     const name = req.body.name;
