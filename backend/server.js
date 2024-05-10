@@ -1,5 +1,5 @@
 //package ekama adala eka variable ekakata save karanawa, ethakota variable ekenma ekapara call karanna puluwan :)
-import router from "./routes/route.js"
+
 
 const express = require("express"); //declare dependencies
 const mongoose = require("mongoose");
@@ -36,6 +36,8 @@ const discountRouter = require('./routes/discount.js')
 const employeeRouter = require("./routes/employees.js");
 
 const itemRoute = require("./routes/item")
+
+const router = require("./routes/route.js")
 
 
 

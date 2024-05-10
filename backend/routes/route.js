@@ -1,11 +1,11 @@
-import { Router } from "express";
-const router = Router();
+//import { Router } from "express";
+const express = require('express')
+const router = express.Router();
 
 /**import all controllers */
-
-import * as controller from '../controller/appController.js';
-import Auth ,{ localVariables } from "../middlewares/auth.js";
-import {registerMail} from '../controller/mailer.js';
+const controller = require('../controller/appController.js');
+const { Auth, localVariables } = require("../middlewares/auth.js");
+const { registerMail } = require('../controller/mailer.js');
 
 
 /**POST methods */
@@ -36,4 +36,4 @@ router.route('/deleteuser').delete(Auth, controller.deleteUser); // delete user
 router.route('/deleteAnUser/:id').delete(controller.deleteAnuser); // delete user by id
 
 
-export default router;
+module.exports = router;

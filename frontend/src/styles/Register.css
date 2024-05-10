@@ -18,7 +18,7 @@
   .right {
     flex: 1;
     max-height: 100%;
-    background-image: url('../assests/IMG_2052.JPG');
+    background-image: url('../components/assests/IMG_2052.JPG');
     background-size: contain;
     background-position: center;
     opacity: 0.8; /* Adjust the opacity as needed */
@@ -87,7 +87,7 @@
 
 ._right {
   flex: 3;
-  background-image: url('../assests/image.png');
+  background-image: url('../components/assests/image.png');
   background-size: contain;
   background-position: center;
   opacity: 0.8;

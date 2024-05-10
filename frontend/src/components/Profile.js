@@ -6,7 +6,7 @@ import useFetch from '../hooks/fetch.hook';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/Username.module.css';
 import extend from '../styles/Profile.module.css';
-import avatar from '../assests/profile.png';
+import avatar from './assests/profile.png';
 import { updateUser } from '../helper/helper';
 import { deleteUser } from '../helper/helper';
 

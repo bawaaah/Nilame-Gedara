@@ -1,4 +1,4 @@
-export default{
+module.exports = {
     JWT_SECRET : "123456789",
     EMAIL : "vishwakaushalya2003@gmail.com",
     PASSWORD : "fbfxeggeikrzjkcf",
