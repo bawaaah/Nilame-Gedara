@@ -1,36 +1,49 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const itemRoute = require("./routes/item")
+//package ekama adala eka variable ekakata save karanawa, ethakota variable ekenma ekapara call karanna puluwan :)
 
-const app = express()
+const express = require("express"); //declare dependencies
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const app = express();
 
-const cors = require("cors")
-const bodyParser = require("body-parser")
+const PORT = process.env.PORT || 8070; //8070 OR 8070 eka nattan wena available ekak
 
-app.use(cors())
-app.use(bodyParser.json({ limit: '50mb' }));  // Set limit to 50MB
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(cors()); //declare karapuwa use karanawa
+app.use(bodyParser.json());
 
-app.use("/api/catalog",itemRoute)
+const URL = "mongodb+srv://bhawan:200132400588@atlascluster.fl5bp73.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"; 
 
-const selectProductRoute = require("./routes/selectProduct")
-app.use("/selectProductRouter",selectProductRoute)
+mongoose.connect(URL, { //connect mongodb
+    //useCreateIndex: true, 
+    //useNewUrlParser: true,
+    //useUnifiedTopology: true,
+    //useFindAndModify: false
+});
 
-const item = require("./routes/item")
-app.use("/add",item)
+const connection = mongoose.connection; //hadagatta connection eka open karagannawa
+connection.once("open", () => {
+    console.log("Mongodb connection success!"); //if success
+})
 
-const order = require('./routes/order')
-app.use("/order",order)
+const productRouter = require("./routes/products.js");
+const categoryRouter = require("./routes/categorys.js");
 
-const checkout = require('./routes/checkout')
-app.use("/checkout",checkout)
+const paymentRouter = require("./routes/payments.js");
+const paymentController = require('./routes/paymentController.js');
+const discountRouter = require('./routes/discount.js')
 
-const mongoDbURL = "mongodb+srv://bhawan:200132400588@atlascluster.fl5bp73.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster"
+const employeeRouter = require("./routes/employees.js");
 
-mongoose.connect(mongoDbURL)
-.then(() => console.log('Database Connected'))
-.catch((err) => console.log(err))
+app.use("/products",productRouter); //assign wela thiyena file eka load wenna
+app.use("/categorys",categoryRouter);
 
-app.listen(8070, () => console.log('Sever Connected'))
+app.use('/auth', paymentController);
 
+app.use("/discount",discountRouter);
+app.use("/payment",paymentRouter);
 
+app.use("/employee",employeeRouter);
+
+app.listen(PORT, () => { //ara port eka listn krnna
+    console.log(`Server is up and running on port number: ${PORT}`);
+});
