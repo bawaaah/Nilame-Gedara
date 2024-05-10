@@ -124,6 +124,7 @@ function Checkout() {
                             <button style={styles.button}>Update</button>
                         </Link>
                         <button style={styles.button} onClick={deleteOrder}>Delete</button>
+                        <button style={styles.button}>Pay</button>
                     </div>
                 </div>
             </div>
