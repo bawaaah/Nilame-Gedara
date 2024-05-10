@@ -71,7 +71,7 @@ const AdminFeedbackDisplay = () => {
 
     const getFeedback = async () => {
         try {
-            const response = await Axios.get('http://localhost:3001/api/getFeedback');
+            const response = await Axios.get('http://localhost:8070/api/getFeedback');
             setFeedbacks(response.data?.feedbacks || []);
             setFilteredFeedbacks(response.data?.feedbacks || []);
         } catch (error) {
@@ -108,7 +108,7 @@ const AdminFeedbackDisplay = () => {
             reply: replyMessage,
         };
 
-        Axios.post('http://localhost:3001/api/updateFeedback', payloadupdate)
+        Axios.post('http://localhost:8070/api/updateFeedback', payloadupdate)
             .then((response) => {
                 console.log("Feedback submitted successfully:", response.data);
             })

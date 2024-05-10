@@ -18,6 +18,6 @@
     "eject": "react-scripts eject",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm start",
-    "dev:backend": "cd backend/server && concurrently \"node server.js\""
+    "dev:backend": "cd backend && concurrently \"node server.js\""
   }
 }

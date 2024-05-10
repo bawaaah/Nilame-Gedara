@@ -84,7 +84,7 @@ const ComplaintForm = () => {
                         suggestion: suggestions,
                     };
 
-                    const response = await Axios.post('http://localhost:3001/api/updateComplaint', payloadupdate);
+                    const response = await Axios.post('http://localhost:8070/api/updateComplaint', payloadupdate);
                     console.log("Complaint updated successfully:", response.data);
                 } else {
                     const payload = {
@@ -97,7 +97,7 @@ const ComplaintForm = () => {
                         reply: null,
                     };
 
-                    const response = await Axios.post('http://localhost:3001/api/createComplaint', payload);
+                    const response = await Axios.post('http://localhost:8070/api/createComplaint', payload);
                     console.log("Complaint submitted successfully:", response.data);
                 }
                 // Reset form fields after successful submission
@@ -117,7 +117,7 @@ const ComplaintForm = () => {
 
     const fetchMaxIdAndSetId = async () => {
         try {
-            const response = await Axios.get('http://localhost:3001/api/getmaxid');
+            const response = await Axios.get('http://localhost:8070/api/getmaxid');
             const maxId = response.data?.maxId || 0;
             location.state ? setId(data.id) : setId(maxId + 1);
         } catch (error) {

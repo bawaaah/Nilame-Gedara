@@ -19,8 +19,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const routerComplaint = require('../routes/routerComplaint');
-const routerFeedback = require('../routes/routerFeedback');
+const routerComplaint = require('./routes/routerComplaint');
+const routerFeedback = require('./routes/routerFeedback');
 
 const app = express();
 
@@ -36,5 +36,5 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routerComplaint , routerFeedback);
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8070;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -17,7 +17,7 @@ const ComplaintDisplay = () => {
 
     const getComplaint = async () => {
         try {
-            const response = await Axios.get('http://localhost:3001/api/getComplaint');
+            const response = await Axios.get('http://localhost:8070/api/getComplaint');
             if (response.data?.complaints) {
                 const userComplaints = response.data.complaints.filter(complaint => complaint.email === username);
                 setComplaints(userComplaints);
@@ -34,7 +34,7 @@ const ComplaintDisplay = () => {
         const confirmDelete = window.confirm("Are you sure you want to delete this complaint?");
         if (confirmDelete) {
             try {
-                await Axios.post('http://localhost:3001/api/deletecomplaint', data);
+                await Axios.post('http://localhost:8070/api/deletecomplaint', data);
                 getComplaint(); // Refresh the list after deletion
             } catch (error) {
                 console.error('Error Deleting complaints:', error);

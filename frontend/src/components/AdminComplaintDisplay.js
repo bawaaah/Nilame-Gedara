@@ -93,7 +93,7 @@ const AdminComplaintDisplay = () => {
 
   const getComplaint = async () => {
     try {
-      const response = await Axios.get('http://localhost:3001/api/getComplaint');
+      const response = await Axios.get('http://localhost:8070/api/getComplaint');
       setComplaints(response.data?.complaints || []);
       setFilteredComplaints(response.data?.complaints || []);
     } catch (error) {
@@ -130,7 +130,7 @@ const AdminComplaintDisplay = () => {
       reply: replyMessage,
     };
 
-    Axios.post('http://localhost:3001/api/updateComplaint', payloadupdate)
+    Axios.post('http://localhost:8070/api/updateComplaint', payloadupdate)
       .then((response) => {
         console.log("Complaint submitted successfully:", response.data);
       })

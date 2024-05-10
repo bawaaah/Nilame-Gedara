@@ -18,7 +18,7 @@ const FeedbackDisplay = () => {
 
     const getFeedback = async () => {
         try {
-            const response = await Axios.get('http://localhost:3001/api/getFeedback');
+            const response = await Axios.get('http://localhost:8070/api/getFeedback');
             console.log(response.data);
 
             if (response.data?.feedback) {
@@ -39,7 +39,7 @@ const FeedbackDisplay = () => {
       
     const handleDelete = async (data) => {
         try {
-            await Axios.post('http://localhost:3001/api/deletefeedback', data);
+            await Axios.post('http://localhost:8070/api/deletefeedback', data);
             setFeedbacks(); // Refresh the list after deletion
         } catch (error) {
             console.error('Error Deleting complaints:', error);
