@@ -75,6 +75,12 @@ export default function Register() {
             <Link to="/login">
               <button type="button" className="_login" >Login here!</button>
             </Link>
+            <br></br>
+            <div className="form-label" style={{fontFamily: 'Josefin Sans'}}>Admin Login</div>
+            <Link to="/AllCategorys">
+              <button type="button" className="_login" >Login here!</button>
+            </Link>
+            
             <br/>
           </form>
         </div>

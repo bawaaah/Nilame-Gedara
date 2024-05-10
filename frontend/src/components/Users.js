@@ -10,6 +10,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
+
+import Header from './Header';
+import NavBar from './NavBar';
+
+
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -101,6 +106,15 @@ export default function Users() {
   });
 
   return (
+    <div>
+            <Header />
+            <div class="containerApp">
+
+                <div class="nav-container">
+                    <NavBar />
+                </div>
+
+                <div class="content-container">
     <div className="container mx-auto mt-8">
       <div className="mb-4 max-w-sm">
         <input
@@ -169,5 +183,10 @@ export default function Users() {
         </DialogActions>
       </Dialog>
     </div>
+    </div>
+
+</div>
+</div>
+
   );
 }
