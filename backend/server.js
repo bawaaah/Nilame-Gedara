@@ -34,6 +34,8 @@ const discountRouter = require('./routes/discount.js')
 
 const employeeRouter = require("./routes/employees.js");
 
+const itemRoute = require("./routes/item")
+
 app.use("/products",productRouter); //assign wela thiyena file eka load wenna
 app.use("/categorys",categoryRouter);
 
@@ -43,6 +45,20 @@ app.use("/discount",discountRouter);
 app.use("/payment",paymentRouter);
 
 app.use("/employee",employeeRouter);
+
+app.use("/api/catalog",itemRoute)
+
+const selectProductRoute = require("./routes/selectProduct")
+app.use("/selectProductRouter",selectProductRoute)
+
+const item = require("./routes/item")
+app.use("/add",item)
+
+const order = require('./routes/order')
+app.use("/order",order)
+
+const checkout = require('./routes/checkout')
+app.use("/checkout",checkout)
 
 app.listen(PORT, () => { //ara port eka listn krnna
     console.log(`Server is up and running on port number: ${PORT}`);

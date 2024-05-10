@@ -29,6 +29,12 @@ import DisplaySingleEmp from './components/displaysingle';
 import AllEmployees from './components/AllEmployees';
 import UpdateEmployee from './components/UpadateEmployee';
 
+import Home2 from './components/OrderManagement/home2'
+import Home from './components/CatalogManagement/home'
+import SingleItem from './components/OrderManagement/singleItem'
+import Checkout from './components/OrderManagement/Checkout'
+import Update from './components/OrderManagement/update';
+
 
 function App() {
   return (
@@ -61,6 +67,12 @@ function App() {
               <Route path="/DisplaySingleEmp/:id" element={<DisplaySingleEmp />} />
               <Route path="/UpdateEmployee/:id" element={<UpdateEmployee />} />
               <Route path="/" element={<MainPage />} />
+
+              <Route path='/catalogManagement' element={<Home />}></Route>
+              <Route path='/home' element={<Home2 />}></Route>
+              <Route path='/SingleItem/:id' element={<SingleItem />}></Route>
+              <Route path='/Checkout/:id' element={<Checkout />}></Route>
+              <Route path='/update/:id' element={<Update />}></Route>
 
             </Routes>
     </Router>
