@@ -66,9 +66,10 @@ app.use("/order",order)
 const checkout = require('./routes/checkout')
 app.use("/checkout",checkout)
 
-app.use('/api', router)
+// app.use('/api', router)
+const routerComplaint = require("./routes/routerComplaint.js")
 
-app.use('/api', routerComplaint , routerFeedback);
+app.use('/api', routerComplaint , router);
 
 
 app.listen(PORT, () => { //ara port eka listn krnna
