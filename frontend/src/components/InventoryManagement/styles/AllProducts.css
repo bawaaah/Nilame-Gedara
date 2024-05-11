@@ -38,7 +38,7 @@
 
   }
 
-.button-row {
+.button-row-inventory {
     display: flex;
     justify-content:left;
     align-items: center;
@@ -46,7 +46,7 @@
     padding: 10px;
 }
 
-.button-row button {
+.button-row-inventory button {
     padding: 10px 20px;
     background-color: white; 
     border: 2px solid #2A0A0B;
@@ -60,7 +60,7 @@
     margin-right: 10px;
 }
 
-.button-row button:hover {
+.button-row-inventory button:hover {
     background-color: #D4BB9D; 
 }
 
@@ -175,7 +175,7 @@ table .dispose {
 
 }
 
-.button-row .link-button {
+.button-row-inventory .link-button {
     padding: 10px 20px;
     background-color: white; 
     border: 2px solid #2A0A0B;
@@ -189,7 +189,7 @@ table .dispose {
     margin-right: 10px;
 }
 
-.button-row .link-button:hover {
+.button-row-inventory .link-button:hover {
     background-color: #D4BB9D; 
 }
 

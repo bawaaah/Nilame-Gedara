@@ -52,7 +52,7 @@
   height: 100%; /* Ensure left side takes full height */
 }
 
-.register_button {
+.register_ {
   width: 708px;
   border-radius: 10px;
   color: white;
@@ -61,12 +61,12 @@
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  display: block; /* Ensure button takes full width */
-  margin-left: auto; /* Center the button horizontally */
-  margin-right: auto; /* Center the button horizontally */
+  display: block; /* Ensure  takes full width */
+  margin-left: auto; /* Center the  horizontally */
+  margin-right: auto; /* Center the  horizontally */
 }
 
-.register_button:hover{
+.register_:hover{
   background-color: #2a0a0bb3;
 }
 

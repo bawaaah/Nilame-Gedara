@@ -136,7 +136,7 @@ export default function AllProducts() {
 
                             </div>
 
-                            <div class="button-row">
+                            <div class="button-row-inventory">
                                 <Link to={`/GenerateReports`} className="button link-button">Generate Reports</Link>
                                 <Link to={`/AllProducts`} className="button link-button">Manage Items</Link>
                                 <Link to={`/add`} className="button link-button">Add New Items</Link>

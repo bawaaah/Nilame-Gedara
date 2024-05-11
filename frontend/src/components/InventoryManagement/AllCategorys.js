@@ -118,13 +118,13 @@ export default function AllCategorys() {
 
                             </div>
 
-                            <div class="button-row">
+                            <div class="button-row-inventory">
                                 <Link to={`/GenerateReports`} className="button link-button">Generate Reports</Link>
                                 <Link to={`/AllProducts`} className="button link-button">Manage Items</Link>
                                 <Link to={`/add`} className="button link-button">Add New Items</Link>
                                 <Link to={`/AddCategory`} className="button link-button">Add New Category</Link>
 
-                                <form class="searchBarU" role="search">
+                                <form class="searchBar" role="search">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
                                 </form>
 
