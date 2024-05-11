@@ -212,6 +212,13 @@ function SelectProduct() {
         },
         checkbox: {
           cursor: 'pointer'
+        },
+        thDescription: {
+          padding: '10px 15px',
+          backgroundColor: '#2a0a0b',
+          color: '#d4bb9d',
+          border: '1px solid #d4bb9d',
+          width: '8000px' // Sets a specific width for the Description column
         }
       };
     
@@ -222,7 +229,7 @@ function SelectProduct() {
               <tr>
                 <th style={styles.th}>Name</th>
                 <th style={styles.th}>Category</th>
-                <th style={styles.th}>Description</th>
+                <th style={styles.thDescription}>Description</th>
                 <th style={styles.th}>Rental Price</th>
                 <th style={styles.th}>Availability</th>
                 <th style={styles.th}>Damaged Qty</th>
