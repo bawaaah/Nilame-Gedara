@@ -73,7 +73,7 @@ function Update() {
 
   function handleSubmit(e) {
     e.preventDefault(); 
-    const data = { count: itemDetails.count, date: itemDetails.date.split('T')[0] }; 
+    const data = { count: itemDetails.count, date: itemDetails.date.split('T')[0], total: itemDetails.count*itemDetails.unitPrice}; 
 
     axios.put(`http://localhost:8070/checkout/updateOrder/${id}`, data)
       .then(() => {
