@@ -48,6 +48,14 @@ import Email from './components/Email';
 
 /**auth middleware */
 import { AuthorizeUser } from './middleware/auth'
+import ComplaintForm from './components/ComplaintForm'
+import FeedbackForm from './components/FeedbackForm';
+import AdminComplaintDisplay from './components/AdminComplaintDisplay';
+import FeedbackDisplay from './components/FeedbackDisplay';
+import GalleryForm from './components/GalleryForm';
+import GalleryAdmin from './components/GalleryAdmin';
+import ComplaintDisplay from './components/ComplaintDisplay';
+import AdminFeedbackDisplay from './components/AdminFeedbackDisplay';
 
 
 
@@ -101,6 +109,16 @@ function App() {
               <Route path='/SingleItem/:id' element={<SingleItem />}></Route>
               <Route path='/Checkout/:id' element={<Checkout />}></Route>
               <Route path='/update/:id' element={<Update />}></Route>
+
+              <Route path='/ComplaintForm' element={<ComplaintForm/>} />
+              <Route path='/FeedbackForm' element={<FeedbackForm/>} />
+              <Route path='/AdminComplaintDisplay' element={<AdminComplaintDisplay/>}/>
+              <Route path='/FeedbackDisplay' element={<FeedbackDisplay/>}/>
+              <Route path='/GalleryForm' element={<GalleryForm/>}/>
+              <Route path='/GelleryAdmin' element={<GalleryAdmin/>}/>
+              <Route path='/ComplaintDisplay' element={<ComplaintDisplay/>}/>
+              <Route path='/AdminFeedbackDisplay' element={<AdminFeedbackDisplay
+              />}/>
 
             </Routes>
     </Router>

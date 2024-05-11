@@ -39,6 +39,7 @@ const itemRoute = require("./routes/item")
 
 const router = require("./routes/route.js")
 
+app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/products",productRouter); //assign wela thiyena file eka load wenna
@@ -66,6 +67,9 @@ const checkout = require('./routes/checkout')
 app.use("/checkout",checkout)
 
 app.use('/api', router)
+
+app.use('/api', routerComplaint , routerFeedback);
+
 
 app.listen(PORT, () => { //ara port eka listn krnna
     console.log(`Server is up and running on port number: ${PORT}`);
