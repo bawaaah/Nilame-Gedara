@@ -1,15 +1,22 @@
 const mongoose = require('mongoose');
 
 const itemSchema = new mongoose.Schema({
-    itemId: {
+    pid : {
         type: String,
-        required: true
+        require: true
+    },
+    name : {
+        type : String,
+        require: true
+    },
+    pQty : { 
+        type : Number,
+        require: true
+    },
+    category : {
+        type : String,
     },
     description: {
-        type: String,
-        required: true
-    },
-    itemName: {
         type: String,
         required: true
     },
@@ -22,8 +29,8 @@ const itemSchema = new mongoose.Schema({
         required: true
     },
     image: {
-        type: Boolean,
-        required: true
+        data: Buffer,
+        contentType: String
     }
 })
 

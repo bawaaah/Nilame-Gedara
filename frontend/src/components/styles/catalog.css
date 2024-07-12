@@ -1,0 +1,114 @@
+/* Container styles */
+.containerb {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 80px;
+    background-color: #fcf4d9;
+    width: 900px;
+}
+
+/* Item styles */
+.item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fcf4d9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Title styles */
+.title {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Image styles */
+.image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Paragraph styles */
+.paragraph {
+    color: #666;
+    font-size: 18px;
+    line-height: 0.7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Button styles */
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c89513;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px;
+}
+
+/* Dropdown styles */
+.dropdown {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    background-color: white;
+    background-image: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 100%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    width: 200px;
+}
+
+.dropdown:hover {
+    border-color: #a2a2a2;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.dropdown:focus {
+    border-color: #5C7CFA;
+    box-shadow: 0 4px 8px rgba(46, 105, 235, 0.4);
+}
+
+/* Search input styles */
+.search {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    background: white no-repeat 95% center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    outline: none;
+    width: calc(100% - 40px);
+}
+
+.search:hover {
+    border-color: #a2a2a2;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.search:focus {
+    border-color: #5C7CFA;
+    box-shadow: 0 4px 8px rgba(46, 105, 235, 0.4);
+}
+
+/* Search area alignment */
+.srch {
+    text-align: center;
+}
